@@ -11,7 +11,6 @@ if ($result = mysqli_query($connect, $sql)) {
     $row = mysqli_fetch_array($result);
     if (!empty($row)) {
         if ($row["userPassword"] == $password) {
-            session_start();
             getUserInfo($phone);
             header("Location: ../../Pages/index.php");
         } else {
