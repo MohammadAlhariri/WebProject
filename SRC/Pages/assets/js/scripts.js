@@ -4,13 +4,13 @@ jQuery(document).ready(function() {
     /*
         Login form validation
     */
-    $('.login-form input[type="text"], .login-form input[type="password"], .login-form input[type="number"]').on('focus', function() {
+    $('.login-form input[type="text"], .login-form input[type="password"], .login-form input[type="number"],input[type="email"]').on('focus', function() {
     	$(this).removeClass('input-error');
     });
     
     $('.login-form').on('submit', function(e) {
     	
-    	$(this).find('input[type="number"], input[type="password"]').each(function(){
+    	$(this).find('input[type="number"], input[type="password"], input[type="email"]').each(function(){
     		if( $(this).val() == "" ) {
     			e.preventDefault();
     			$(this).addClass('input-error');

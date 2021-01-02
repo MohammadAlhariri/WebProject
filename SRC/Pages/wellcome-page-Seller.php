@@ -43,10 +43,10 @@
 
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1>Wellcome to our eCommerce Website</h1>
+                    <h1>Welcome to our Seller eCommerce Accounts </h1>
                     <div class="description">
                         <p>
-                            Please Choose the <strong>"login or register forms"</strong> To Enter to our website.
+                            Please Choose the <strong>"login or register forms for Seller"</strong> To Enter to Your account.
 
                         </p>
                     </div>
@@ -54,6 +54,50 @@
             </div>
 
             <div class="row">
+
+                <div class="col-sm-5">
+
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Sign up now</h3>
+                                <p>Fill in the form below to get instant access:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="registration-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-full-name">Full name</label>
+                                    <input type="text" name="form-full-name" placeholder="Full name..."
+                                           class="form-full-name form-control" id="form-full-name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-email">Email</label>
+                                    <input type="text" name="form-email" placeholder="Email..."
+                                           class="form-email form-control" id="form-email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-phone">Phone</label>
+                                    <input type="number" name="form-phone" placeholder="Phone..."
+                                           class="form-phone form-control" id="form-phone"minlength="2">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-address">Address </label>
+                                    <input type="text" name="form-address" placeholder="Address..."
+                                           class="form-address form-control" id="form-address">
+                                </div>
+                                <button type="submit" class="btn">Sign me up!</button>
+                            </form>
+                        </div>
+                    </div>
+                    <p style="margin-top: 5px">Want to discover our products, <a href="wellcome-page-user.php">Click here ...</a></p>
+                </div>
+                <div class="col-sm-1 middle-border"></div>
+                <div class="col-sm-1"></div>
                 <div class="col-sm-5">
 
                     <div class="form-box">
@@ -69,9 +113,9 @@
                         <div class="form-bottom">
                             <form role="form" action="" method="post" class="login-form">
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-phone">Username</label>
-                                    <input type="number" name="form-phone" placeholder="Phone..."
-                                           class="form-phone form-control" id="form-phone" minlength="2">
+                                    <label class="sr-only" for="form-email">Email</label>
+                                    <input type="email" name="form-email" placeholder="Email..."
+                                           class="form-email form-control" id="form-email">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-password">Password</label>
@@ -90,7 +134,7 @@
 
                                 <p>All information are secure
                                     <a>
-                                    <i class="fa fa-smile-o"></i></p></a>
+                                        <i class="fa fa-smile-o"></i></p></a>
                             </div>
 
                         </div>
@@ -98,49 +142,6 @@
 
                 </div>
 
-                <div class="col-sm-1 middle-border"></div>
-                <div class="col-sm-1"></div>
-
-                <div class="col-sm-5">
-
-                    <div class="form-box">
-                        <div class="form-top">
-                            <div class="form-top-left">
-                                <h3>Sign up now</h3>
-                                <p>Fill in the form below to get instant access:</p>
-                            </div>
-                            <div class="form-top-right">
-                                <i class="fa fa-pencil"></i>
-                            </div>
-                        </div>
-                        <div class="form-bottom">
-                            <form role="form" action="" method="post" class="registration-form">
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-first-name">First name</label>
-                                    <input type="text" name="form-first-name" placeholder="First name..."
-                                           class="form-first-name form-control" id="form-first-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-last-name">Last name</label>
-                                    <input type="text" name="form-last-name" placeholder="Last name..."
-                                           class="form-last-name form-control" id="form-last-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-email">Email</label>
-                                    <input type="text" name="form-email" placeholder="Email..."
-                                           class="form-email form-control" id="form-email">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-phone">Phone</label>
-                                    <input type="number" name="form-phone" placeholder="Phone..."
-                                           class="form-phone form-control" id="form-phone"minlength="2">
-                                </div>
-                                <button type="submit" class="btn">Sign me up!</button>
-                            </form>
-                        </div>
-                    </div>
-                    <p style="margin-top: 5px">Want to be a seller, <a href="wellcome-page-Seller.php">Click here ...</a></p>
-                </div>
             </div>
 
         </div>
