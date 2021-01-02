@@ -9,6 +9,7 @@ https://www.tooplate.com/view/2114-pixie
 body {
 	font-family: 'Roboto', sans-serif;
 	transition: all 0.5s;
+
 }
 p {
 	margin-bottom: 0px;
@@ -56,45 +57,48 @@ a {
 	margin-top: 15px;
 }
 
-/* Pre Header Style */
-#pre-header {
-	background-color: #3a8bcd;
-	text-align: center;
-}
-#pre-header span {
-	color: #fff;
-	font-size: 15px;
-	padding: 10px 0px;
-	display: inline-block;
-}
+
 
 /* Header Style */
 .navbar .navbar-brand {
 	text-align: center;
-	width: 100%;
+	width: 30%;
 	position: relative;
 	padding: 25px 0px;
+	hanging-punctuation: 100px;
+	float: left;
+	text-align: center;
 }
+.navbar .navbar-brand img{
+	width: 250px;
+	margin-top:22px ;
+}
+
 .bg-dark {
 	background-color: #fff!important;
 	border-bottom: 1px solid #eee;
 }
-#navbarResponsive {
-	z-index: 999;
-	position: absolute;
-	left: 50%;
-	top: 105px;
-	transform: translateX(-50%);
-}
+/*#navbarResponsive {*/
+/*	z-index: 999;*/
+/*	position: absolute;*/
+/*	left: 50%;*/
+/*	top: 105px;*/
+/*	transform: translateX(-50%);*/
+/*}*/
 .navbar-dark .navbar-nav .nav-item {
 	margin: 0px 15px;
 }
 .navbar-dark .navbar-nav .nav-link {
 	text-transform: uppercase;
 	font-size: 15px;
-	font-weight: 700;
+	/*font-weight: 700;*/
 	color: #1e1e1e;
 	transition: all 0.5s;
+}
+body > nav
+{
+	height: 100px;
+	overflow: hidden;
 }
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .active>.nav-link,
@@ -117,7 +121,7 @@ a {
 }
 .navbar-dark .navbar-toggler {
 	border-color: #3a8bcd;
-	background-color: #3a8bcd;	
+	background-color: #3a8bcd;
 	height: 50px;
 	outline: none;
 }
@@ -285,10 +289,15 @@ a {
 	list-style: none;
 	display: inline-block;
 }
+.footer .logo{
+	height: 130px;
+	overflow: hidden;
+}
 .footer .logo img {
-	max-width: 100%;
-	margin-top: 60px;
+	width: 250px;
 	margin-bottom: 40px;
+
+	margin-top: -40px;
 }
 .footer .footer-menu {
 	margin-bottom: 40px;
@@ -341,6 +350,14 @@ a {
 .sub-footer a {
 	color: #3a8bcd;
 	text-decoration: none;
+}
+#titlel{
+	color: orangered;
+}
+#elogo{
+	font-size: 48px;
+	font-weight: lighter;
+
 }
 
 /* Featured Page Style */
