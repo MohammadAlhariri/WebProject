@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +47,8 @@
                     <h1>Welcome to our Seller eCommerce Accounts </h1>
                     <div class="description">
                         <p>
-                            Please Choose the <strong>"login or register forms for Seller"</strong> To Enter to Your account.
+                            Please Choose the <strong>"login or register forms for Seller"</strong> To Enter to Your
+                            account.
 
                         </p>
                     </div>
@@ -83,7 +85,7 @@
                                 <div class="form-group">
                                     <label class="sr-only" for="form-phone">Phone</label>
                                     <input type="number" name="form-phone" placeholder="Phone..."
-                                           class="form-phone form-control" id="form-phone"minlength="2">
+                                           class="form-phone form-control" id="form-phone" minlength="2">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-address">Address </label>
@@ -94,7 +96,8 @@
                             </form>
                         </div>
                     </div>
-                    <p style="margin-top: 5px">Want to discover our products, <a href="wellcome-page-user.php">Click here ...</a></p>
+                    <p style="margin-top: 5px">Want to discover our products, <a href="welcome-page-user.php">Click here
+                            ...</a></p>
                 </div>
                 <div class="col-sm-1 middle-border"></div>
                 <div class="col-sm-1"></div>

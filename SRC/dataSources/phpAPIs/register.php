@@ -1,16 +1,25 @@
 <?php
-$cid = addslashes(strip_tags($_POST['phone']));
-$name = addslashes(strip_tags($_POST['name']));
-$key = addslashes(strip_tags($_POST['password']));
 
+require("../config/connectWithRemoteDB.php");
+include("../../model/getUserInformationByPhone.php");
 
+$cid = addslashes(strip_tags($_POST['form-phone']));
+$fname = addslashes(strip_tags($_POST['form-first-name']));
+$lname = addslashes(strip_tags($_POST['form-last-name']));
+$key = addslashes(strip_tags($_POST['form-password']));
+$fullName = $fname . " " . $lname;
+$sql = "INSERT INTO `user` (`userName`, `userPhone`,`userPassword`, `parent`) VALUES ( '$fullName', $cid, '$key','Users')";
 
-include "connection.php";
-$sql="INSERT INTO `user` (`userName`, `userPhone`,`userPassword`, `parent`) VALUES ( '$name', $cid, '$key','Users')";
-mysqli_query($con,$sql) or
-    die ("can't add record");
+/** @var TYPE_NAME $con */
+$result = mysqli_query($connect, $sql);
 
-echo "Your Account has been created you can login";
-   
-mysqli_close($con);
-?> 
+if ($result) {
+
+    session_start();
+    // Session Variables are created
+    getUserInfo($cid);
+    header("Location: ../../Pages/index.php");
+
+} else {
+    header("Location: ../../Pages/welcome-page-Seller.php");
+}

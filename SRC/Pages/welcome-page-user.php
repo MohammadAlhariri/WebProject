@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wellcome To our Website</title>
+    <title>Welcome To our Website</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -60,14 +61,25 @@
                         <div class="form-top">
                             <div class="form-top-left">
                                 <h3>Login to our site</h3>
-                                <p>Enter Phone and password to log on:</p>
+                                <p>Enter Phone and password to log on:<br>
+                                    <?php if (isset($_GET["msg"])) {
+                                        if ($_GET["msg"] == 1) {
+                                            echo "<span class='btn-outline-danger' style='font-size:20px;'>Wrong Password</span>";
+                                        } else {
+                                            echo "<span class='btn-outline-danger' style='font-size:20px;'>No User Found</span>";
+                                        }
+                                    }
+                                    ?>
+                                </p>
                             </div>
+
                             <div class="form-top-right">
                                 <i class="fa fa-key"></i>
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form">
+                            <form role="form" action="../dataSources/phpAPIs/login.php" method="post"
+                                  class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-phone">Username</label>
                                     <input type="number" name="form-phone" placeholder="Phone..."
@@ -90,7 +102,7 @@
 
                                 <p>All information are secure
                                     <a>
-                                    <i class="fa fa-smile-o"></i></p></a>
+                                        <i class="fa fa-smile-o"></i></p></a>
                             </div>
 
                         </div>
@@ -114,7 +126,8 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="registration-form">
+                            <form role="form" action="../dataSources/phpAPIs/register.php" method="post"
+                                  class="registration-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-first-name">First name</label>
                                     <input type="text" name="form-first-name" placeholder="First name..."
@@ -126,20 +139,21 @@
                                            class="form-last-name form-control" id="form-last-name">
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-email">Email</label>
-                                    <input type="text" name="form-email" placeholder="Email..."
-                                           class="form-email form-control" id="form-email">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="text" name="form-password" placeholder="Password..."
+                                           class="form-password form-control" id="form-password">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="form-phone">Phone</label>
                                     <input type="number" name="form-phone" placeholder="Phone..."
-                                           class="form-phone form-control" id="form-phone"minlength="2">
+                                           class="form-phone form-control" id="form-phone" minlength="2">
                                 </div>
                                 <button type="submit" class="btn">Sign me up!</button>
                             </form>
                         </div>
                     </div>
-                    <p style="margin-top: 5px">Want to be a seller, <a href="wellcome-page-Seller.php">Click here ...</a></p>
+                    <p style="margin-top: 5px">Want to be a seller, <a href="welcome-page-Seller.php">Click here ...</a>
+                    </p>
                 </div>
             </div>
 

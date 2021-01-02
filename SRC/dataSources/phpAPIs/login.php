@@ -1,27 +1,26 @@
 <?php
-
-
-
-$phone = addslashes(strip_tags($_GET['phone']));
-
-$password = addslashes(strip_tags($_GET['password']));
-$parent=addslashes(strip_tags($_GET['parent']));
-
-
-include "connection.php";
+require("../config/connectWithRemoteDB.php");
+include("../../model/getUserInformationByPhone.php");
+$phone = addslashes(strip_tags($_POST['form-phone']));
+$password = addslashes(strip_tags($_POST['form-password']));
+// $parent = addslashes(strip_tags($_POST['parent']));
 $sql = "SELECT `userID`, `userName`, `userPhone`, `userEmail`, `userAddress`, `userPassword`, `userImage`, `userAnswer1`, `userAnswer2`,`parent`  
-    FROM `user` WHERE `userPhone`= $phone AND `userPassword`='$password' AND `parent` ='$parent';";
-if ($result = mysqli_query($con,$sql))
-  {
-   $emparray = array();
-   while($row =mysqli_fetch_assoc($result))
-       
-           {$emparray[] = $row;}
+    FROM `user` WHERE `userPhone`= $phone AND `parent` ='Users';";
+if ($result = mysqli_query($connect, $sql)) {
+    $emparray = array();
+    $row = mysqli_fetch_array($result);
+    if (!empty($row)) {
+        if ($row["userPassword"] == $password) {
+            session_start();
+            getUserInfo($phone);
+            header("Location: ../../Pages/index.php");
+        } else {
+            header("Location: ../../Pages/welcome-page-user.php?msg=1");
+            // password Wrong
+        }
 
-  echo json_encode($emparray);
-  // Free result set
- 
-  mysqli_free_result($result);
-  mysqli_close($con);
+    } else {
+        header("Location: ../../Pages/welcome-page-user.php?msg=2");
+//            user not found
+    }
 }
-?> 

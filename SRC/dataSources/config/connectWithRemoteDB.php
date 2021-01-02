@@ -2,11 +2,11 @@
 $dbhost = 'remotemysql.com:3306';
 $dbuser = 'QABvWPJfmS';
 $dbpass = 'yxiloXAIAH';
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+$dbname = 'QABvWPJfmS';
 
-if (!$conn) {
+$connect = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+/*if (!$connect) {
     die('Could not connect: ' . mysqli_error());
 }
-echo 'Connected successfully';
-mysqli_close($conn);
-?>
+echo 'Connected successfully';*/
