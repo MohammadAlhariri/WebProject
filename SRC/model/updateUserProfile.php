@@ -9,7 +9,6 @@ $userPhone = addslashes(strip_tags($_POST['phone']));
 $userEmail = addslashes(strip_tags($_POST['email']));
 $userAddress = addslashes(strip_tags($_POST['address']));
 
-
 $sql = "";
 //Check for new Image
 $fileTmpPath = $_FILES['fileInput']['tmp_name'];

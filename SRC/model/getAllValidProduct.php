@@ -16,6 +16,7 @@ if ($isParent == 'Users') {
         $msg = 2;
     }
 }
+
 // header("Location: ../Pages/seller-product.php?msg=$msg");
 // must forwarding to unshipped Orders page
 mysqli_close($connect->getdbconnect());
