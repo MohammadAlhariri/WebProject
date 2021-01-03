@@ -1,39 +1,41 @@
 <?php
 include("IncludesParts/header.php");
-include "../model/getAllProductsOfSeller.php";
-$products = getValues($_SESSION["sellerID"]);
+require_once "../model/getAllunvalidProduct.php";
+require_once "../model/getSellerNameByID.php";
+
+$products = getValues();
 ?>
     <div class="container">
         <div class="row">
             <?php
-            while ($r = mysqli_fetch_array($products)) { ?>
+            while ($row = mysqli_fetch_array($products)) { ?>
                 <div class=" col-12 col-md-4 col-sm-6" style="border-radius: 10px;" data-aos="fade-up">
                     <div class="card-container">
                         <div class="card">
                             <div class="front">
                                 <div class="cover">
-                                    <?php echo $r["productCategory"]; ?>
+                                    <?php echo $row["productCategory"]; ?>
                                 </div>
                                 <div class="user">
-                                    <img class="img-circle" src="../<?php echo $r["productImage"]; ?>"/>
+                                    <img class="img-circle" src="../<?php echo $row["productImage"]; ?>"/>
                                 </div>
                                 <div class="content">
                                     <div class="main">
-                                        <h3 class="name">Name : <?php echo $r["productName"]; ?></h3>
-                                        <h3 class="name">Price : <?php echo $r["productPrice"]; ?>$</h3>
+                                        <h3 class="name">Name : <?php echo $row["productName"]; ?></h3>
+                                        <h3 class="name">Price : <?php echo $row["productPrice"]; ?>$</h3>
                                     </div>
 
                                 </div>
                             </div> <!-- end front panel -->
                             <div class="back ">
                                 <div class="header">
-                                    <h5 class="motto"><?php echo $r["productDate"]; ?></h5>
+                                    <h5 class="motto"><?php echo getName($row["sellerID"]); ?></h5>
                                 </div>
                                 <div class="content row">
                                     <div class="main">
                                         <div class="container text-center">
-                                        <h4 class="text-center"><?php echo $r["productDescription"]; ?></h4>
-                                        <p class="text-center"><?php echo $r["productState"]; ?></p></div>
+                                        <h4 class="text-center"><?php echo $row["productDescription"]; ?></h4>
+                                        <p class="text-center"><?php echo  $row["productDate"]; ?></p></div>
 
                                     </div>
                                 </div>
@@ -41,15 +43,15 @@ $products = getValues($_SESSION["sellerID"]);
                                 <div class="footer row">
 
                                     <div class="social-links text-center row">
-                                        <form class="col-md-3 offset-md-2" action="update-product-seller.php" method="post">
+                                        <form class="col-md-3 offset-md-2" action="../model/removeByID.php" method="post">
                                             <input type="hidden" name="id"
-                                                   value="<?php echo $r["productID"]; ?>"/>
-                                            <input value="Edit" type="submit" class="btn btn-outline-primary">
+                                                   value="<?php echo $row["productID"]; ?>"/>
+                                            <input value="Decline" type="submit" class="btn btn-outline-primary">
                                         </form>
-                                        <form class="col-md-3" action="../model/removeByID.php" method="post">
-                                            <input type="hidden" name="id"
-                                                   value="<?php echo $r["productID"]; ?>"/>
-                                            <input value="Remove" type="submit" class="btn btn-outline-primary ">
+                                        <form class="col-md-3" action="../model/approveProduct.php" method="post">
+                                            <input type="hidden" name="productID"
+                                                   value="<?php echo $row["productID"]; ?>"/>
+                                            <input value="Approve" type="submit" class="btn btn-outline-primary ">
                                         </form>
                                     </div>
                                 </div>

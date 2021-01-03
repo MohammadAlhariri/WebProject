@@ -16,5 +16,5 @@ if ($result) {
     echo mysqli_error($connect->getdbconnect());
     $msg = 2;
 }
-header("Location: ../Pages/seller-product.php?msg=$msg");
+header("Location: ../Pages/admin-approve-products.php");
 mysqli_close($connect->getdbconnect());

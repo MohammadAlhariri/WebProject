@@ -15,7 +15,7 @@ Admin Package:
 	- admin profile page
 	- update admin profile api
 	- Approve orders page
-	- Approve products page
+	- Approve products page Done
     - get all order not shipped
     - get all valid product api
     - get last order api

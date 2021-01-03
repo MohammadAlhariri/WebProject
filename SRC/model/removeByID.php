@@ -1,6 +1,6 @@
 <?php
 require_once("../dataSources/config/connectWithRemoteDB.php");
-
+session_start();
 $productID = addslashes(strip_tags($_POST['id']));
 $date = getdate();
 $connect = new DbConnection();
@@ -15,5 +15,10 @@ if ($result) {
     // echo mysqli_error($connect->getdbconnect());
     $msg = 2;
 }
-header("Location: ../Pages/seller-products.php?msg=$msg");
+if($_SESSION["parent"]=="seller"){
+header("Location: ../Pages/seller-products.php?msg=$msg");}
+else{
+    header("Location: ../Pages/admin-approve-products.php");
+
+}
 mysqli_close($connect->getdbconnect());

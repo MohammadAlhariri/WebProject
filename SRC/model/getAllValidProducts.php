@@ -1,13 +1,9 @@
 <?php
-
-function getValues()
+function getAllProducts()
 {
     include("../dataSources/config/connectWithRemoteDB.php");
     $connect = new DbConnection();
 
-    $sql = "SELECT * FROM `product`where `productState` = 'Not Validate'";
-    mysqli_close($connect->getdbconnect());
-
+    $sql = "SELECT * FROM `product`where `product`.`productState` = 'Validate'";
     return mysqli_query($connect->getdbconnect(), $sql);
 }
-
