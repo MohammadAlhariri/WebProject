@@ -16,6 +16,8 @@ function getSellerInfo($email)
         $_SESSION["sellerEmail"] = $rows["sellerEmail"];
         $_SESSION["sellerImage"] = $rows["sellerImage"];
         $_SESSION["sellerAddress"] = $rows["sellerAddress"];
+        $_SESSION["parent"] = "seller";
+
         $_SESSION["login_time_stamp"] = time();
     }
 }
