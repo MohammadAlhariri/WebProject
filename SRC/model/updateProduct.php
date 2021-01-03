@@ -12,55 +12,55 @@ $date = getdate();
 $connect = new DbConnection();
 $sql = "";
 //Check for new Image
-if (isset($_FILES["fileInput"]["name"])) {
+$fileTmpPath = $_FILES['fileInput']['tmp_name'];
 
-    echo "if image";
+if (!file_exists($_FILES['fileInput']['tmp_name']) || !is_uploaded_file($_FILES['fileInput']['tmp_name'])) {
+    echo "else without update image";
 
-    $fileTmpPath = $_FILES['fileInput']['tmp_name'];
-    $image_no = date("Y&m&d&h&i&s");
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["fileInput"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-    $newFileName = $image_no . '.' . $imageFileType;
-    if (isset($_POST["submit"])) {
+    $sql = "UPDATE `product` SET `productName` = '$name', `productDescription` = '$des', `productPrice` = $price, `productCategory` = '$category'  WHERE `product`.`productID` = '$productID'";
 
-        echo "if image post";
+} else
+    {
 
-        $uploadFileDir = '../uploads/';
-        $dest_path = $uploadFileDir . $newFileName;
-        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-            $message = 'File is successfully uploaded.';
-        } else {
-            $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+        echo "if image";
+
+
+        if (isset($_POST["submit"])) {
+
+            echo "if image post";
+            $image_no = date("Y&m&d&h&i&s");
+            $target_dir = "uploads/";
+            $target_file = $target_dir . basename($_FILES["fileInput"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                // Check if image file is a actual image or fake image
+            $newFileName = $image_no . '.' . $imageFileType;
+            $uploadFileDir = '../uploads/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;}
+
+            $image_no = date("Y&m&d&h&i&s");//or Anything You Need
+            $path = "uploads/" . $image_no . ".jpg";
+
+            $sql = "UPDATE `product` SET `productName` = '$name', `productDescription` = '$des', `productPrice` = $price, `productCategory` = '$category', `productImage` = '$path'   WHERE `product`.`productID` = '$productID'";
+
+
         }
-
-        $image_no = date("Y&m&d&h&i&s");//or Anything You Need
-        $path = "uploads/" . $image_no . ".jpg";
-
-        $sql = "UPDATE `product` SET `productName` = '$name', `productDescription` = '$des', `productPrice` = $price, `productCategory` = $category, `productImage` = '$path'   WHERE `product`.`productID` = $productID";
-
 
     }
 
-} else {
-
-    echo "else without update image";
-
-    $sql = "UPDATE `product` SET `productName` = '$name', `productDescription` = '$des', `productPrice` = $price, `productCategory` = $category,  WHERE `product`.`productID` = $productID";
-
-}
-
 $result = mysqli_query($connect->getdbconnect(), $sql);
-$msg = "";
-
+$msg = mysqli_error($connect->getdbconnect());
 if ($result) {
     //echo "Record Added";
     $msg = 1;
 } else {
-    //echo mysqli_error($connect->getdbconnect());
-    $msg = 2;
+    $msg = mysqli_error($connect->getdbconnect());
+
 }
 
 mysqli_close($connect->getdbconnect());
