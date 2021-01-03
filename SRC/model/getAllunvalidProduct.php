@@ -3,7 +3,7 @@ require_once("../dataSources/config/connectWithRemoteDB.php");
 session_start();
 $connect = new DbConnection();
 $sql = "SELECT * FROM `product`where `productState` = 'Not Validate'";
-$isParent = _SESSION['parent'];
+$isParent = $_SESSION['parent'];
 if ($isParent == 'Admins') {
     $result = mysqli_query($connect->getdbconnect(), $sql);
     $msg = "";
