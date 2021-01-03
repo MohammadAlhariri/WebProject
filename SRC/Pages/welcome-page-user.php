@@ -152,7 +152,7 @@ session_start();
                             </form>
                         </div>
                     </div>
-                    <p style="margin-top: 5px">Want to be a seller, <a href="welcome-page-Seller.php">Click here ...</a>
+                    <p style="margin-top: 5px">Want to be a seller, <a href="welcome-page-seller.php">Click here ...</a>
                     </p>
                 </div>
             </div>

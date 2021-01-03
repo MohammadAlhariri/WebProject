@@ -1,18 +1,23 @@
 <?php
-$phone = addslashes(strip_tags($_POST['phone']));
-$name = addslashes(strip_tags($_POST['name']));
-$pass = addslashes(strip_tags($_POST['password']));
-$email = addslashes(strip_tags($_POST['email']));
-$address = addslashes(strip_tags($_POST['address']));
 
-
-
-include "connection.php";
+require("../config/connectWithRemoteDB.php");
+include("../../model/getSellerInformationByEmail.php");
+$connect = new DbConnection();
+$phone = addslashes(strip_tags($_POST['form-phone']));
+$name = addslashes(strip_tags($_POST['form-full-name']));
+$pass = addslashes(strip_tags($_POST['form-password']));
+$email = addslashes(strip_tags($_POST['form-email']));
+$address = addslashes(strip_tags($_POST['form-address']));
 $sql = "INSERT INTO `seller`(`sellerName`, `sellerPhone`, `sellerEmail`, `sellerAddress`, `sellerPassword`)  VALUES ('$name',$phone,'$email','$address','$pass')";
-mysqli_query($con,$sql) or
-    die ("can't add record");
+$result = mysqli_query($connect->getdbconnect(), $sql);
 
-echo "Your Account has been created you can login";
-   
-mysqli_close($con);
-?> 
+if ($result) {
+    session_start();
+    // Session Variables are created
+    getSellerInfo($email);
+    header("Location: ../../Pages/index.php");
+    // forward to Seller index here
+} else {
+    header("Location: ../../Pages/welcome-page-seller.php");
+}
+// done

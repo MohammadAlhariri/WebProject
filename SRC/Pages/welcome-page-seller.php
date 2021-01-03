@@ -9,7 +9,7 @@ session_start();
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wellcome To our Website</title>
+    <title>Welcome To our Website</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -70,10 +70,11 @@ session_start();
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="registration-form">
+                            <form role="form" action="../dataSources/phpAPIs/sellerRegister.php" method="post"
+                                  class="registration-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-full-name">Full name</label>
-                                    <input type="text" name="form-full-name" placeholder="Full name..."
+                                    <input type="text" name="form-full-name" placeholder="Seller name..."
                                            class="form-full-name form-control" id="form-full-name">
                                 </div>
 
@@ -92,6 +93,11 @@ session_start();
                                     <input type="text" name="form-address" placeholder="Address..."
                                            class="form-address form-control" id="form-address">
                                 </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password </label>
+                                    <input type="password" name="form-password" placeholder="Password..."
+                                           class="form-address form-control" id="form-password">
+                                </div>
                                 <button type="submit" class="btn">Sign me up!</button>
                             </form>
                         </div>
@@ -107,14 +113,24 @@ session_start();
                         <div class="form-top">
                             <div class="form-top-left">
                                 <h3>Login to our site</h3>
-                                <p>Enter Phone and password to log on:</p>
+                                <p>Enter Email and password to log on:<br>
+                                    <?php if (isset($_GET["msg"])) {
+                                        if ($_GET["msg"] == 1) {
+                                            echo "<span class='btn-outline-danger' style='font-size:20px;'>Wrong Password</span>";
+                                        } else {
+                                            echo "<span class='btn-outline-danger' style='font-size:20px;'>No Seller Found</span>";
+                                        }
+                                    }
+                                    ?>
+                                </p>
                             </div>
                             <div class="form-top-right">
                                 <i class="fa fa-key"></i>
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form">
+                            <form role="form" action="../dataSources/phpAPIs/sellerLogin.php" method="post"
+                                  class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-email">Email</label>
                                     <input type="email" name="form-email" placeholder="Email..."
