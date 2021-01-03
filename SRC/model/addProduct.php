@@ -27,13 +27,13 @@ if (isset($_POST["submit"])) {
 
 }
 
-$image_no = date("Y&m&d&h&i&s");//or Anything You Need
+
 //$image = $_POST['image'];
-$path = "uploads/" . $image_no . ".jpg";
-$date = getdate();
+$path = "uploads/" . $newFileName;
+
 $connect = new DbConnection();
 $sql = "INSERT INTO `product`(`productName`, `productDescription`, `productPrice`, `productImage`, `productCategory`, `productState`, `productDate`, `sellerID`) 
-VALUES ('$name','$des','$price','$target_file','$category','Not Validate',NOW(),$sid)";
+VALUES ('$name','$des','$price','$path','$category','Not Validate',NOW(),$sid)";
 $result = mysqli_query($connect->getdbconnect(), $sql);
 $msg = "";
 if ($result) {
