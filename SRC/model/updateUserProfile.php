@@ -43,7 +43,7 @@ if (!file_exists($_FILES['fileInput']['tmp_name']) || !is_uploaded_file($_FILES[
         }
 
         $image_no = date("Y&m&d&h&i&s");//or Anything You Need
-        $path = "uploads/user/" . $image_no . ".jpg";
+        $path = "uploads/useImg/" . $image_no . ".jpg";
 
         $sql = "UPDATE `user` SET `userName` = '$userName', `userPhone` = '$userPhone', `userEmail` = '$userEmail', `userAddress` = '$userAddress', `UserImage` = '$path'   WHERE `user`.`userID` = '$userID'";
 
