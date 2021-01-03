@@ -1,10 +1,10 @@
 <?php
 
 require_once("../dataSources/config/connectWithRemoteDB.php");
-$orderID = addslashes(strip_tags($_POST['productID']));
+$orderID = addslashes(strip_tags($_POST['orderID']));
 $connect = new DbConnection();
 
-$sql = "UPDATE `order` SET `adminApprove` = 'Yes' WHERE `order`.`$orderID` = $orderID;";
+$sql = "UPDATE `order` SET `adminApproved` = 'Yes' WHERE `order`.`$orderID` = $orderID;";
 
 $result = mysqli_query($connect->getdbconnect(), $sql);
 $msg = "";
