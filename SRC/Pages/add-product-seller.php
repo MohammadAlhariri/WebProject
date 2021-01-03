@@ -13,7 +13,7 @@ include "IncludesParts/header.php"; ?>
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="" class="tm-edit-product-form">
+                        <form action="../model/addProduct.php" class="tm-edit-product-form" method="post" enctype="multipart/form-data">
                             <div class="form-group mb-3">
                                 <label
                                         for="name"
@@ -33,6 +33,7 @@ include "IncludesParts/header.php"; ?>
                                 >Description</label
                                 >
                                 <textarea
+                                        name="description"
                                         class="form-control validate"
                                         rows="3"
                                         required
@@ -41,24 +42,37 @@ include "IncludesParts/header.php"; ?>
                             <div class="form-group mb-3">
                                 <label
                                         for="category"
-                                >Category</label
+                                >Select category</label
                                 >
+
                                 <select
+                                        name="category"
                                         class="custom-select tm-select-accounts"
                                         id="category"
+                                        onchange="selection()"
                                 >
-                                    <option selected>Select category</option>
-                                    <option value="1">New Arrival</option>
-                                    <option value="2">Most Popular</option>
-                                    <option value="3">Trending</option>
-                                    <option value="1">New Arrival</option>
-                                    <option value="4">Most Popular blah</option>
-                                    <option value="5">some blah</option>
-                                    <option value="7">new blah</option>
-                                    <option value="8">blah</option>
+                                    <option selected value="New Arrival">New Arrival</option>
+                                    <option value="Most Popular">Most Popular</option>
+                                    <option value="Trending">Trending</option>
+                                    <option value="New Arrival">New Arrival</option>
+                                    <option value="Most Popular blah">Most Popular blah</option>
+                                    <option value="some blah">some blah</option>
+                                    <option value="new blah">new blah</option>
+                                    <option value="blah">blah</option>
+                                    <option value="other">Others</option>
 
                                 </select>
+                                <input name="newCategory" id="others" class="form-control" hidden="hidden" placeholder="Category" >
                             </div>
+                            <script>function selection() {
+                                    var selected = document.getElementById("category").value;
+                                    if (selected == "other") {
+
+                                        document.getElementById("others").removeAttribute("hidden");
+                                    } else {
+                                        document.getElementById("others").setAttribute("hidden","hidden");
+                                    }
+                                }</script>
                             <div class="form-group mb-3">
                                 <label
                                         for="price"
@@ -71,10 +85,10 @@ include "IncludesParts/header.php"; ?>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                         <div class="tm-product-img-dummy mx-auto text-center">
-                            <img  src="assets/img/productUploadImage.png" alt="page"id="imgLogo" width="70%">
+                            <img src="assets/img/productUploadImage.png" alt="page" id="imgLogo" width="70%">
                         </div>
                         <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;"/>
+                            <input name="fileInput" id="fileInput" type="file" style="display:none;"/>
                             <input
                                     type="button"
                                     class="btn btn-primary btn-block mx-auto"
@@ -86,7 +100,7 @@ include "IncludesParts/header.php"; ?>
                     <div class="col-12">
                         <div class="row">
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary text-uppercase">Add Product Now</button>
+                                <button name="submit" type="submit" class="btn btn-primary text-uppercase">Add Product Now</button>
                             </div>
 
                         </div>

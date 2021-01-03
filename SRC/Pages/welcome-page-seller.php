@@ -1,5 +1,6 @@
 <?php
 session_start();
+print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +71,7 @@ session_start();
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="../dataSources/phpAPIs/sellerRegister.php" method="post"
+                            <form role="form" action="../dataSources/config/sellerRegister.php" method="post"
                                   class="registration-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-full-name">Full name</label>
@@ -129,7 +130,7 @@ session_start();
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="../dataSources/phpAPIs/sellerLogin.php" method="post"
+                            <form role="form" action="../dataSources/config/sellerLogin.php" method="post"
                                   class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-email">Email</label>

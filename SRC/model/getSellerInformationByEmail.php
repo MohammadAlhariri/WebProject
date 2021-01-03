@@ -4,10 +4,11 @@ session_start();
 function getSellerInfo($email)
 {
     $connect = new DbConnection();
-    $sql = "SELECT * FROM `seller` WHERE  `sellerEmail`='$email';";
+    $sql = "SELECT * FROM `seller` WHERE `sellerEmail`='$email';";
     $result = mysqli_query($connect->getdbconnect(), $sql);
 
     if ($result) {
+
         $rows = mysqli_fetch_array($result);
         $_SESSION["sellerID"] = $rows["sellerID"];
         $_SESSION["sellerName"] = $rows["sellerName"];
