@@ -54,14 +54,10 @@ $products = getAllProducts();
                                 <div class="featured-item">
                                     <img src="../<?php echo $row["productImage"]; ?>"
                                          alt="<?php echo $row['productName']; ?>">
-                                    <div class="row">
-                                        <div class="col-md-10">
 
-                                            <h4><?php echo $row["productName"]; ?></h4>
-                                            <h6><?php echo $row["productPrice"]; ?></h6></div>
-                                        <div class="col-md-2 mr-auto text-center">
-                                            <i class="fa fa-plus-circle " style="font-size: 48px;"></i></div>
-                                    </div>
+                                    <h4><?php echo $row["productName"]; ?></h4>
+                                    <h6><?php echo $row["productPrice"]; ?></h6>
+
                                 </div>
 
                             </a>
