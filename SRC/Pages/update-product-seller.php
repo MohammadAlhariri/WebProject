@@ -15,9 +15,10 @@ $product = getValues($_POST["id"]);
                 </div>
                 <div class="row tm-edit-product-row">
                     <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="../model/addProduct.php" class="tm-edit-product-form" method="post"
+                        <form action="../model/updateProduct.php" class="tm-edit-product-form" method="post"
                               enctype="multipart/form-data">
                             <div class="form-group mb-3">
+                                <input type="hidden" name="productID" value="<?php echo $product["productID"]; ?>"/>
                                 <label
                                         for="name"
                                 >Product Name
