@@ -1,9 +1,12 @@
 <?php
+
 include "IncludesParts/header.php";?>
 
 <form action="" method="POST"></form>
+
     <!-- Page Content -->
     <!-- Banner Starts Here -->
+
     <div class="banner">
       <div class="container">
         <div class="row">
