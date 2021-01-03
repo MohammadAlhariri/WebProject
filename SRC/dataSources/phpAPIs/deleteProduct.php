@@ -9,6 +9,5 @@ mysqli_query($con,$sql);
 echo mysqli_error($con);
 
 echo "Record Deleted";
-   
-mysqli_close($con);
-?> 					
+
+
