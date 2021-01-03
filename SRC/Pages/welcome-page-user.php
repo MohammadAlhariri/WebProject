@@ -103,7 +103,7 @@ session_start();
 
                                 <p>All information are secure
                                     <a>
-                                        <i class="fa fa-smile-o"></i></p></a>
+                                        <i class="fa fa-smile-o"></i></a></p>
                             </div>
 
                         </div>

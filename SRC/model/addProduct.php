@@ -1,19 +1,13 @@
 <?php
-
 require_once("../dataSources/config/connectWithRemoteDB.php");
-
-
 session_start();
 $name = addslashes(strip_tags($_POST['name']));
-
 $des = addslashes(strip_tags($_POST['description']));
 $price = addslashes(strip_tags($_POST['price']));
 $category = addslashes(strip_tags($_POST['category']));
 $sid = $_SESSION['sellerID'];
 print_r($_FILES);
 $fileTmpPath = $_FILES['fileInput']['tmp_name'];
-//-------------------------------------
-
 $image_no = date("Y&m&d&h&i&s");
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileInput"]["name"]);
@@ -32,28 +26,22 @@ if (isset($_POST["submit"])) {
     }
 
 }
-//------------------------------------
 
 $image_no = date("Y&m&d&h&i&s");//or Anything You Need
 //$image = $_POST['image'];
 $path = "uploads/" . $image_no . ".jpg";
-
-
 $date = getdate();
-
 $connect = new DbConnection();
-
 $sql = "INSERT INTO `product`(`productName`, `productDescription`, `productPrice`, `productImage`, `productCategory`, `productState`, `productDate`, `sellerID`) 
-VALUES ('$name','$des','$price','$path','$category','Not Validate',NOW(),$sid)";
-$result=mysqli_query($connect->getdbconnect(), $sql);
-$msg="";
-if($result){
+VALUES ('$name','$des','$price','$target_file','$category','Not Validate',NOW(),$sid)";
+$result = mysqli_query($connect->getdbconnect(), $sql);
+$msg = "";
+if ($result) {
     //echo "Record Added";
-    $msg=1;
-}
-else{
+    $msg = 1;
+} else {
     //echo mysqli_error($connect->getdbconnect());
-    $msg=2;
+    $msg = 2;
 }
 
 mysqli_close($connect->getdbconnect());
