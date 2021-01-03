@@ -10,12 +10,13 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <div class="line-dec"></div>
-                    <h1>Subscribe on  <span id="titlel"> <span id="elogo">e</span>-Commerce</span> now!</h1>
+                    <h1>Subscribe on <span id="titlel"> <span id="elogo">e</span>-Commerce</span> now!</h1>
                 </div>
             </div>
             <div class="col-md-8 offset-md-2">
                 <div class="main-content">
-                    <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id dictum efficitur. Phasellus vel interdum elit.</p>
+                    <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id dictum
+                        efficitur. Phasellus vel interdum elit.</p>
                     <div class="container">
                         <form id="subscribe" action="" method="get">
                             <div class="row">
@@ -87,7 +88,7 @@
                 <div class="copyright-text">
                     <p>Copyright &copy; 2021 Company Name
 
-                       </p>
+                    </p>
                 </div>
             </div>
         </div>
@@ -107,18 +108,27 @@
 <script src="assets/js/isotope.js"></script>
 <script src="assets/js/flex-slider.js"></script>
 
-
-<script language = "text/Javascript">
+<script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t){                   //declaring the array outside of the
-        if(! cleared[t.id]){                      // function makes it static and global
+    function clearField(t) {                   //declaring the array outside of the
+        if (!cleared[t.id]) {                      // function makes it static and global
             cleared[t.id] = 1;  // you could use true and false, but that's more typing
-            t.value='';         // with more chance of typos
-            t.style.color='#fff';
+            t.value = '';         // with more chance of typos
+            t.style.color = '#fff';
         }
     }
 </script>
-
+<script>
+    $("#fileInput").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgLogo').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+</script>
 </body>
 
 </html>

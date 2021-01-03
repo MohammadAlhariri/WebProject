@@ -32,6 +32,9 @@ h3 {
     color: #555;
     line-height: 30px;
 }
+body > div.container.tm-mt-big.tm-mb-big > div > div > div > div.row.mb-4 > div > h2{
+	padding-top: 15px;
+}
 
 img { max-width: 100%; }
 

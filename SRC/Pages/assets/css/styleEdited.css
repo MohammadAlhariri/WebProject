@@ -1,0 +1,9 @@
+.tm-edit-product-row{
+    padding-bottom: 20px;
+}
+.tm-product-img-dummy {
+height: 200px;
+}
+body > div.container.tm-mt-big.tm-mb-big > div > div > div > div.row.mb-2 > div > h2{
+    margin-top: 10px;
+}
