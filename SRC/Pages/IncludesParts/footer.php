@@ -107,6 +107,8 @@
 <script src="assets/js/owl.js"></script>
 <script src="assets/js/isotope.js"></script>
 <script src="assets/js/flex-slider.js"></script>
+<script src="assets/css/animation/library/dist/aos.js"></script>
+<script src="assets/css/animation/animation.js"></script>
 
 <script language="text/Javascript">
     cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
