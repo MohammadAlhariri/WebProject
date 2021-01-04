@@ -19,6 +19,5 @@ if($_SESSION["parent"]=="seller"){
 header("Location: ../Pages/seller-products.php?msg=$msg");}
 else{
     header("Location: ../Pages/admin-approve-products.php");
-
 }
 mysqli_close($connect->getdbconnect());
