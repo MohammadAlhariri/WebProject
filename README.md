@@ -31,7 +31,7 @@ User Package:
     - modify home page of user with products
     - modify gallery page of user with products
     - get products from order by orderID 
-    - get products by category 
+    - get products by category done
 
 
 

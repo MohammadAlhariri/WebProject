@@ -16,6 +16,12 @@ if ($isParent == 'Admins') {
         $msg = 2;
     }
 }
-// header("Location: ../Pages/seller-product.php?msg=$msg");
-// must forwarding to unshipped Orders page
+function getAllOrderNotShipped()
+{
+    require_once("../dataSources/config/connectWithRemoteDB.php");
+    $connect = new DbConnection();
+    $sql = "SELECT * FROM `order` where `orderState` = 'Not Shipped'";
+    return mysqli_query($connect->getdbconnect(), $sql);
+
+}
 mysqli_close($connect->getdbconnect());

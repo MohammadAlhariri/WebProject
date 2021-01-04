@@ -19,3 +19,12 @@ if ($result) {
 // header("Location: ../Pages/seller-product.php?msg=$msg");
 // must forwarding to unshipped Orders page
 mysqli_close($connect->getdbconnect());
+
+function approveShippingOrder()
+{
+    require_once("../dataSources/config/connectWithRemoteDB.php");
+    $connect = new DbConnection();
+    $orderID = addslashes(strip_tags($_POST['productID']));
+    $sql = "UPDATE `order` SET `orderState` = 'Shipped' WHERE `order`.`orderID` = $orderID;";
+    return mysqli_query($connect->getdbconnect(), $sql);
+}

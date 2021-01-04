@@ -8,7 +8,6 @@ function getSellerInfo($email)
     $result = mysqli_query($connect->getdbconnect(), $sql);
 
     if ($result) {
-
         $rows = mysqli_fetch_array($result);
         $_SESSION["sellerID"] = $rows["sellerID"];
         $_SESSION["sellerName"] = $rows["sellerName"];
@@ -17,7 +16,6 @@ function getSellerInfo($email)
         $_SESSION["sellerImage"] = $rows["sellerImage"];
         $_SESSION["sellerAddress"] = $rows["sellerAddress"];
         $_SESSION["parent"] = "seller";
-
         $_SESSION["login_time_stamp"] = time();
     }
 }

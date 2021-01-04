@@ -3,11 +3,9 @@ require_once("../config/connectWithRemoteDB.php");
 session_start();
 function getUserInfo($phone)
 {
-    $connect =new DbConnection();
+    $connect = new DbConnection();
     $sql = "SELECT * FROM `user` WHERE `userPhone`='$phone';";
-
     $result = mysqli_query($connect->getdbconnect(), $sql);
-
     if ($result) {
         $rows = mysqli_fetch_array($result);
         $_SESSION["userID"] = $rows["userID"];

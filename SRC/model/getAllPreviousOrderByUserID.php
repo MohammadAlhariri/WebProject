@@ -18,3 +18,13 @@ if ($result) {
 // must forwarding to unshipped Orders page
 
 mysqli_close($connect->getdbconnect());
+
+function getAllPreviousOrderByUserID()
+{
+    require_once("../dataSources/config/connectWithRemoteDB.php");
+    $connect = new DbConnection();
+    $userID = $_SESSION['userID'];
+    $sql = "SELECT * FROM `order` where `userID` = '$userID';";
+    return mysqli_query($connect->getdbconnect(), $sql);
+
+}

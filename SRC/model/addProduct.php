@@ -43,6 +43,5 @@ if ($result) {
     //echo mysqli_error($connect->getdbconnect());
     $msg = 2;
 }
-
 mysqli_close($connect->getdbconnect());
 header("Location: ../Pages/add-product-seller.php?msg=$msg");

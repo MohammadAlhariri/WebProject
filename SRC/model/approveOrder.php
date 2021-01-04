@@ -18,3 +18,13 @@ if ($result) {
 // header("Location: ../Pages/seller-product.php?msg=$msg");
 // must forwarding to invalidate Orders page
 mysqli_close($connect->getdbconnect());
+
+function approveOrder()
+{
+    require_once("../dataSources/config/connectWithRemoteDB.php");
+    $connect = new DbConnection();
+    $orderID = addslashes(strip_tags($_POST['orderID']));
+    $sql = "UPDATE `order` SET `adminApproved` = 'Yes' WHERE `order`.`$orderID` = $orderID;";
+    return mysqli_query($connect->getdbconnect(), $sql);
+
+}

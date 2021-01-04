@@ -15,9 +15,18 @@ if ($result) {
     // echo mysqli_error($connect->getdbconnect());
     $msg = 2;
 }
-if($_SESSION["parent"]=="seller"){
-header("Location: ../Pages/seller-products.php?msg=$msg");}
-else{
+if ($_SESSION["parent"] == "seller") {
+    header("Location: ../Pages/seller-products.php?msg=$msg");
+} else {
     header("Location: ../Pages/admin-approve-products.php");
 }
 mysqli_close($connect->getdbconnect());
+
+function removeByIDfn()
+{
+    $productID = addslashes(strip_tags($_POST['id'])); // In post request Id must be Rename
+    $connect = new DbConnection();
+    $sql = "DELETE FROM `product` WHERE `product`.`productID` = '$productID';";
+    mysqli_query($connect->getdbconnect(), $sql);
+    return mysqli_query($connect->getdbconnect(), $sql);
+}
