@@ -1,5 +1,11 @@
 <?php
-include "IncludesParts/header.php";?>
+include "IncludesParts/header.php";
+include "../model/getProductInformation.php";
+include "../model/getProductsByCategory.php";
+
+$product=getValues($_GET["productID"]);
+
+?>
 
     <!-- Page Content -->
     <!-- Single Starts Here -->
@@ -17,44 +23,44 @@ include "IncludesParts/header.php";?>
               <div id="slider" class="flexslider">
                 <ul class="slides">
                   <li>
-                    <img src="assets/images/big-01.jpg" />
+                    <img src="../<?php echo $product["productImage"];?>" />
                   </li>
-                  <li>
-                    <img src="assets/images/big-02.jpg" />
-                  </li>
-                  <li>
-                    <img src="assets/images/big-03.jpg" />
-                  </li>
-                  <li>
-                    <img src="assets/images/big-04.jpg" />
-                  </li>
+<!--                  <li>-->
+<!--                    <img src="assets/images/big-02.jpg" />-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/big-03.jpg" />-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/big-04.jpg" />-->
+<!--                  </li>-->
                   <!-- items mirrored twice, total of 12 -->
                 </ul>
               </div>
-              <div id="carousel" class="flexslider">
-                <ul class="slides">
-                  <li>
-                    <img src="assets/images/thumb-01.jpg" />
-                  </li>
-                  <li>
-                    <img src="assets/images/thumb-02.jpg" />
-                  </li>
-                  <li>
-                    <img src="assets/images/thumb-03.jpg" />
-                  </li>
-                  <li>
-                    <img src="assets/images/thumb-04.jpg" />
-                  </li>
-                  <!-- items mirrored twice, total of 12 -->
-                </ul>
-              </div>
+<!--              <div id="carousel" class="flexslider">-->
+<!--                <ul class="slides">-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/thumb-01.jpg" />-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/thumb-02.jpg" />-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/thumb-03.jpg" />-->
+<!--                  </li>-->
+<!--                  <li>-->
+<!--                    <img src="assets/images/thumb-04.jpg" />-->
+<!--                  </li>-->
+                 <!-- items mirrored twice, total of 12 -->
+<!--                </ul>-->
+<!--              </div>-->
             </div>
           </div>
           <div class="col-md-6">
             <div class="right-content">
-              <h4>Single Product Name</h4>
-              <h6>$55.00</h6>
-              <p>Proin commodo, diam a ultricies sagittis, erat odio rhoncus metus, eu feugiat lorem lacus aliquet arcu. Curabitur in gravida nisi, non placerat nibh. Praesent sit amet diam ultrices, commodo turpis id, dignissim leo. Suspendisse mauris massa, porttitor non fermentum vel, ullamcorper scelerisque velit. </p>
+              <h4><?php echo $product["productName"];?></h4>
+              <h6>$<?php echo $product["productPrice"];?></h6>
+              <p><?php echo $product["productDescription"];?></p>
               <span>7 left on stock</span>
               <form action="" method="get">
                 <label for="quantity">Quantity:</label>
@@ -66,7 +72,7 @@ include "IncludesParts/header.php";?>
               </form>
               <div class="down-content">
                 <div class="categories">
-                  <h6>Category: <span><a href="#">Pants</a>,<a href="#">Women</a>,<a href="#">Lifestyle</a></span></h6>
+                  <h6>Category: <span><a href="#"><?php echo $product["productCategory"];?></a></span></h6>
                 </div>
                 <div class="share">
                   <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
@@ -92,14 +98,19 @@ include "IncludesParts/header.php";?>
           </div>
           <div class="col-md-12">
             <div class="owl-carousel owl-theme">
-              <a href="single-product.php">
+                <?php
+                $products=getProductsByCategory($product["productCategory"]);
+                while ($row=mysqli_fetch_array($products)){
+                ?>
+              <a href="single-product.php?productID=<?php echo $row["productID"];?>">
                 <div class="featured-item">
-                  <img src="assets/images/item-01.jpg" alt="Item 1">
-                  <h4>Proin vel ligula</h4>
-                  <h6>$15.00</h6>
+                  <img src="../<?php echo $row["productImage"];?>" alt="<?php echo $row["productName"];?>">
+                  <h4><?php echo $row["productName"];?></h4>
+                  <h6>$<?php echo $row["productPrice"];?></h6>
                 </div>
               </a>
-              <a href="single-product.php">
+                    <?php } ?>
+              <!--<a href="single-product.php">
                 <div class="featured-item">
                   <img src="assets/images/item-02.jpg" alt="Item 2">
                   <h4>Erat odio rhoncus</h4>
@@ -154,7 +165,7 @@ include "IncludesParts/header.php";?>
                   <h4>Cras tempus</h4>
                   <h6>$95.00</h6>
                 </div>
-              </a>
+              </a>-->
             </div>
           </div>
         </div>
