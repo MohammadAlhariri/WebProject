@@ -1,10 +1,13 @@
 <?php
-include "IncludesParts/header.php"; ?>
+
+include "IncludesParts/header.php";
+include "../model/getProductsOfLastOrder.php";
+$productsOfOrder = getProductsByOrder();
+?>
 
 <style>
     .shopping-cart {
         width: 100%;
-        height: 423px;
         margin: 80px auto;
         background: #FFFFFF;
         box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
@@ -24,9 +27,12 @@ include "IncludesParts/header.php"; ?>
     }
 
     .item {
+        border-top: 1px solid #E1E8EE;
+
         padding: 20px 30px;
-        height: 120px;
+        height: 150px;
         display: flex;
+
     }
 
     .item:nth-child(3) {
@@ -192,6 +198,9 @@ include "IncludesParts/header.php"; ?>
             margin-right: 20px;
         }
     }
+    body > div.row > div.col-md-8 > div{
+        overflow: auto;
+    }
 
 </style>
 <div class="row">
@@ -204,93 +213,40 @@ include "IncludesParts/header.php"; ?>
                 </div>
 
                 <!-- Product #1 -->
-                <div class="item">
-                    <div class="buttons">
-                        <span class="delete-btn"></span>
-                        <span class="like-btn"></span>
+                <?php
+                while ($row = mysqli_fetch_assoc($productsOfOrder)) {
+                    ?>
+                    <div class="item">
+
+                        <div class="buttons">
+                            <a href="../model/removeProductFromOrder.php?productID=<?php echo $row["productID"];?>&orderID=<?php echo $row["orderID"];?>"><span class="delete-btn"></span></a>
+                            <span class="like-btn"></span>
+                        </div>
+
+                        <div class="image">
+                            <img src="../<?php echo $row["productImage"]; ?>"
+                                 alt="<?php echo $row["productName"]; ?>" width="130px"height="100%"/>
+                        </div>
+
+                        <div class="description">
+                            <span><?php echo $row["productCategory"]; ?></span>
+                            <span><?php echo $row["productName"]; ?></span>
+                        </div>
+
+                        <div class="quantity">
+                            <button class="plus-btn qbutton" type="button" name="button">
+                                <img src="../Pages/assets/ico/plus.svg" alt=""/>
+                            </button>
+                            <input type="text" name="name" value="1">
+                            <button class="minus-btn qbutton qbutton" type="button" name="button">
+                                <img src="../Pages/assets/ico/minus.svg" alt=""/>
+                            </button>
+                        </div>
+
+                        <div class="total-price">$<?php echo $row["price"]; ?></div>
                     </div>
+                <?php } ?>
 
-                    <div class="image">
-                        <img src="../Pages/assets/ico/item-1.png" alt=""/>
-                    </div>
-
-                    <div class="description">
-                        <span>Common Projects</span>
-                        <span>Bball High</span>
-                        <span>White</span>
-                    </div>
-
-                    <div class="quantity">
-                        <button class="plus-btn qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn qbutton qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
-                        </button>
-                    </div>
-
-                    <div class="total-price">$549</div>
-                </div>
-                <!-- Product #2 -->
-                <div class="item">
-                    <div class="buttons">
-                        <span class="delete-btn"></span>
-                        <span class="like-btn"></span>
-                    </div>
-
-                    <div class="image">
-                        <img src="../Pages/assets/ico/item-2.png" alt=""/>
-                    </div>
-
-                    <div class="description">
-                        <span>Maison Margiela</span>
-                        <span>Future Sneakers</span>
-                        <span>White</span>
-                    </div>
-
-                    <div class="quantity">
-                        <button class="plus-btn qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
-                        </button>
-                    </div>
-
-                    <div class="total-price">$870</div>
-                </div>
-
-                <!-- Product #3 -->
-                <div class="item">
-                    <div class="buttons">
-                        <span class="delete-btn"></span>
-                        <span class="like-btn"></span>
-                    </div>
-
-                    <div class="image">
-                        <img src="../Pages/assets/ico/item-3.png" alt=""/>
-                    </div>
-
-                    <div class="description">
-                        <span>Our Legacy</span>
-                        <span>Brushed Scarf</span>
-                        <span>Brown</span>
-                    </div>
-
-                    <div class="quantity">
-                        <button class="plus-btn qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn qbutton" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
-                        </button>
-                    </div>
-
-                    <div class="total-price">$349</div>
-                </div>
             </div>
             <script src="assets/js/jquery-1.11.1.min.js"></script>
             <script type="text/javascript">

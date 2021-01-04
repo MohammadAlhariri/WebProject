@@ -1,13 +1,15 @@
 <?php
 session_start();
-require_once("../config/connectWithRemoteDB.php");
+require_once("../dataSources/config/connectWithRemoteDB.php");
 $connect = new DbConnection();
-$userID = addslashes(strip_tags($_POST['userID']));
+$userID = $_SESSION['userID'];
 $productID = addslashes(strip_tags($_POST['productID']));
 $price = addslashes(strip_tags($_POST['price']));
 $quantity = addslashes(strip_tags($_POST['quantity']));
+
 $totalPrice = $price * $quantity;
-$sql = "SELECT * FROM `order` WHERE userID=userID ORDER BY orderID DESC LIMIT 1;";
+
+$sql = "SELECT * FROM `order` WHERE userID=$userID ORDER BY orderID DESC LIMIT 1;";
 $result = mysqli_query($connect->getdbconnect(), $sql);
 $row = mysqli_fetch_array($result);
 
