@@ -2,46 +2,44 @@
 session_start();
 require_once("../config/connectWithRemoteDB.php");
 $connect = new DbConnection();
-$uid = addslashes(strip_tags($_POST['uid']));
-$pid = addslashes(strip_tags($_POST['pid']));
+$userID = addslashes(strip_tags($_POST['userID']));
+$productID = addslashes(strip_tags($_POST['productID']));
 $price = addslashes(strip_tags($_POST['price']));
 $quantity = addslashes(strip_tags($_POST['quantity']));
-//----------------------
-$sql="SELECT * FROM `order` WHERE userID=$uid ORDER BY orderID DESC LIMIT 1;";
+$totalPrice = $price * $quantity;
+$sql = "SELECT * FROM `order` WHERE userID=userID ORDER BY orderID DESC LIMIT 1;";
 $result = mysqli_query($connect->getdbconnect(), $sql);
-//----------------------
+$row = mysqli_fetch_array($result);
 
-$row=mysqli_fetch_array($result);
-
-if(empty($row)||$row["orderState"]=="Shipped"){
-    $addoder = "INSERT INTO `order`(`orderDate`, `userID`, `orderTotal`, `orderState`) VALUES (NOW(),$uid,500,'Not Shipped');";
-    mysqli_query($connect->getdbconnect(),$addoder);
-    $orderid=getOrderId($uid);
-    insertToOrderContent($orderid,$pid,$quantity,$price);
+if (empty($row) || $row["orderState"] == "Shipped") {
+    $addOrder = "INSERT INTO `order`(`orderDate`, `userID`, `orderTotal`, `orderState`) VALUES (NOW(),$userID,$totalPrice,'Not Shipped');";
+    mysqli_query($connect->getdbconnect(), $addOrder);
+    $orderID = getOrderId($userID);
+    insertToOrderContent($orderID, $productID, $quantity, $price);
     echo mysqli_error($connect->getdbconnect());
     header("Location: ../Pages/index.php");
 
-}
-else if($row["orderState"]=="Not Shipped"){
-    $userid=getOrderId($uid);
-    insertToOrderContent($userid,$pid,$quantity,$price);
+} else if ($row["orderState"] == "Not Shipped") {
+    $userID = getOrderId($userID);
+    insertToOrderContent($userID, $productID, $quantity, $price);
     header("Location: ../Pages/index.php");
 }
 
-function getOrderId($uid){
+function getOrderId($userID)
+{
     $connect = new DbConnection();
-    $sql1="SELECT * FROM `order` WHERE userID=$uid  AND orderState='Not Shipped';";
-    $res=mysqli_query($connect->getdbconnect(),$sql1);
-    $r=mysqli_fetch_array($res);
-    return $r["orderID"];
+    $sql1 = "SELECT * FROM `order` WHERE userID=$userID  AND orderState='Not Shipped';";
+    $result = mysqli_query($connect->getdbconnect(), $sql1);
+    $row = mysqli_fetch_array($result);
+    return $row["orderID"];
 }
 
-function insertToOrderContent($uid,$pid,$quantity,$price){
+function insertToOrderContent($userID, $productID, $quantity, $price)
+{
     $connect = new DbConnection();
     $sql2 = "INSERT INTO `order_content`(`orderID`, `productID`, `quantity`, `price`)
-     VALUES ('$uid','$pid','$quantity','$price');";
-    mysqli_query($connect->getdbconnect(),$sql2);
+     VALUES ('$userID','$productID','$quantity','$price');";
+    mysqli_query($connect->getdbconnect(), $sql2);
     echo mysqli_error($connect->getdbconnect());
     echo "Record Added";
-
 }

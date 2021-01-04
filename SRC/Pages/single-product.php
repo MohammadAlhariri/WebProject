@@ -102,6 +102,9 @@ $product=getValues($_GET["productID"]);
                 $products=getProductsByCategory($product["productCategory"]);
                 while ($row=mysqli_fetch_array($products)){
                 ?>
+
+
+
               <a href="single-product.php?productID=<?php echo $row["productID"];?>">
                 <div class="featured-item">
                   <img src="../<?php echo $row["productImage"];?>" alt="<?php echo $row["productName"];?>">

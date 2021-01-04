@@ -3,7 +3,6 @@
 require_once("../dataSources/config/connectWithRemoteDB.php");
 $orderID = addslashes(strip_tags($_POST['orderID']));
 $connect = new DbConnection();
-
 $sql = "UPDATE `order` SET `adminApproved` = 'Yes' WHERE `order`.`$orderID` = $orderID;";
 
 $result = mysqli_query($connect->getdbconnect(), $sql);
@@ -19,7 +18,7 @@ if ($result) {
 // must forwarding to invalidate Orders page
 mysqli_close($connect->getdbconnect());
 
-function approveOrder()
+function approveOrderfn()
 {
     require_once("../dataSources/config/connectWithRemoteDB.php");
     $connect = new DbConnection();
