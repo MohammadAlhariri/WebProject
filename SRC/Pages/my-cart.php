@@ -3,6 +3,7 @@
 include "IncludesParts/header.php";
 include "../model/getProductsOfLastOrder.php";
 $productsOfOrder = getProductsByOrder();
+$tmpOrderID = "";
 ?>
 
 <style>
@@ -198,63 +199,68 @@ $productsOfOrder = getProductsByOrder();
             margin-right: 20px;
         }
     }
-    body > div.row > div.col-md-8 > div{
+
+    body > div.row > div.col-md-8 > div {
         overflow: auto;
     }
 
 </style>
-<div class="row">
-    <div class="col-md-8">
-        <div class="container">
-            <div class="shopping-cart">
-                <!-- Title -->
-                <div class="titles">
-                    Shopping Bag
-                </div>
-
-                <!-- Product #1 -->
-                <?php
-                while ($row = mysqli_fetch_assoc($productsOfOrder)) {
-                    ?>
-                    <div class="item">
-
-                        <div class="buttons">
-                            <a href="../model/removeProductFromOrder.php?productID=<?php echo $row["productID"];?>&orderID=<?php echo $row["orderID"];?>"><span class="delete-btn"></span></a>
-                            <span class="like-btn"></span>
-                        </div>
-
-                        <div class="image">
-                            <img src="../<?php echo $row["productImage"]; ?>"
-                                 alt="<?php echo $row["productName"]; ?>" width="130px"height="100%"/>
-                        </div>
-
-                        <div class="description">
-                            <span><?php echo $row["productCategory"]; ?></span>
-                            <span><?php echo $row["productName"]; ?></span>
-                        </div>
-
-                        <div class="quantity">
-                            <button class="plus-btn qbutton" type="button" name="button">
-                                <img src="../Pages/assets/ico/plus.svg" alt=""/>
-                            </button>
-                            <input type="text" name="name" value="1">
-                            <button class="minus-btn qbutton qbutton" type="button" name="button">
-                                <img src="../Pages/assets/ico/minus.svg" alt=""/>
-                            </button>
-                        </div>
-
-                        <div class="total-price">$<?php echo $row["price"]; ?></div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="container">
+                <div class="shopping-cart">
+                    <!-- Title -->
+                    <div class="titles">
+                        Shopping Bag
                     </div>
-                <?php } ?>
 
-            </div>
-            <script src="assets/js/jquery-1.11.1.min.js"></script>
-            <script type="text/javascript">
-                $('.minus-btn').on('click', function (e) {
-                    e.preventDefault();
-                    var $this = $(this);
-                    var $input = $this.closest('div').find('input');
-                    var value = parseInt($input.val());
+                    <!-- Product #1 -->
+                    <?php
+                    if ($productsOfOrder != null) {
+                        while ($row = mysqli_fetch_array($productsOfOrder)) {
+                            ?>
+                            <div class="item">
+
+                                <div class="buttons">
+                                    <a href="../model/removeProductFromOrder.php?productID=<?php echo $row["productID"]; ?>&orderID=<?php echo $row["orderID"]; ?>"><span
+                                                class="delete-btn"></span></a>
+                                    <?php $tmpOrderID = $row["orderID"]; ?>
+                                    <span class="like-btn"></span>
+                                </div>
+
+                                <div class="image">
+                                    <img src="../<?php echo $row["productImage"]; ?>"
+                                         alt="<?php echo $row["productName"]; ?>" width="130px" height="100%"/>
+                                </div>
+
+                                <div class="description">
+                                    <span><?php echo $row["productCategory"]; ?></span>
+                                    <span><?php echo $row["productName"]; ?></span>
+                                </div>
+
+                                <div class="quantity">
+                                    <button class="plus-btn qbutton" type="button" name="button">
+                                        <img src="../Pages/assets/ico/plus.svg" alt=""/>
+                                    </button>
+                                    <input type="text" name="name" value="1">
+                                    <button class="minus-btn qbutton qbutton" type="button" name="button">
+                                        <img src="../Pages/assets/ico/minus.svg" alt=""/>
+                                    </button>
+                                </div>
+
+                                <div class="total-price">$<?php echo $row["price"]; ?></div>
+                            </div>
+                        <?php }
+                    } ?>
+
+                </div>
+                <script src="assets/js/jquery-1.11.1.min.js"></script>
+                <script type="text/javascript">
+                    $('.minus-btn').on('click', function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var $input = $this.closest('div').find('input');
+                        var value = parseInt($input.val());
 
                     if (value > 1) {
                         value = value - 1;
@@ -286,27 +292,27 @@ $productsOfOrder = getProductsByOrder();
                 });
             </script>
         </div>
-    </div>
+        </div>
 
-    <div class="col-md-4">
-        <div class="container" style="overflow: auto">
-            <div class="shopping-cart">
-                <div class="titles">
-                    Shipping Address
-                </div>
-                <div class="row">
+        <div class="col-md-4">
+            <div class="container" style="overflow: auto">
+                <div class="shopping-cart">
+                    <div class="titles">
+                        Shipping Address
+                    </div>
+                    <div class="row">
 
-                    <form method="post" class="col-md-11">
-                        <!-- 2 column grid layout with text inputs for the first and last names -->
-
-
-                        <div class="form-outline mb-4">
-                            <input type="text" id="form6Example1" class="form-control" name="name" required
-                                   placeholder="Full name"/>
-                        </div>
+                        <form method="post" action="../model/updateOrderState.php" class="col-md-11">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
 
 
-                        <div class="form-outline mb-4">
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example1" class="form-control" name="name" required
+                                       placeholder="Full name"/>
+                            </div>
+
+
+                            <div class="form-outline mb-4">
                             <input type="number" id="form6Example2" class="form-control " name="phone" required
                                    placeholder="Phone"/>
                         </div>
@@ -326,25 +332,25 @@ $productsOfOrder = getProductsByOrder();
 
 
                         <!-- Checkbox -->
-                        <div class="form-check  mb-4">
-                            <input
-                                    class="form-check-input me-2"
-                                    type="checkbox"
-                                    value=""
-                                    id="c"
-                                    checked required
-                            />
-                            <label class="form-check-label" for="c"> I am sure to send this data </label>
-                        </div>
-
-                        <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary">Place order</button>
-                    </form>
+                            <div class="form-check  mb-4">
+                                <input
+                                        class="form-check-input me-2"
+                                        type="checkbox"
+                                        value=""
+                                        id="c"
+                                        checked required
+                                />
+                                <label class="form-check-label" for="c"> I am sure to send this data </label>
+                            </div>
+                            <input type="hidden" name="orderID" value="<?php echo $tmpOrderID ?>"/>
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn - primary">Place order</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <?php include "IncludesParts/footer.php"; ?>

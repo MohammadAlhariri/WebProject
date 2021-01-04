@@ -14,7 +14,7 @@ $result = mysqli_query($connect->getdbconnect(), $sql);
 $row = mysqli_fetch_array($result);
 
 if (empty($row) || $row["orderState"] == "Shipped") {
-    $addOrder = "INSERT INTO `order`(`orderDate`, `userID`, `orderTotal`, `orderState`) VALUES (NOW(),$userID,$totalPrice,'Not Shipped');";
+    $addOrder = "INSERT INTO `order`(`orderDate`, `userID`, `orderTotal`, `orderState`, `adminApproved`) VALUES (NOW(),$userID,$totalPrice,'Not Shipped', 'No');";
     mysqli_query($connect->getdbconnect(), $addOrder);
     $orderID = getOrderId($userID);
     insertToOrderContent($orderID, $productID, $quantity, $price);
@@ -44,4 +44,9 @@ function insertToOrderContent($userID, $productID, $quantity, $price)
     mysqli_query($connect->getdbconnect(), $sql2);
     echo mysqli_error($connect->getdbconnect());
     echo "Record Added";
+}
+
+function updateOrderTotalPrice($orderID)
+{
+
 }

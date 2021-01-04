@@ -32,6 +32,7 @@ User Package:
     - modify gallery page of user with products
     - get products from order by orderID 
     - get products by category done
+    - send costumer msg "only on unshipped order" 
 
 
 
