@@ -1,5 +1,5 @@
 <?php
-include "IncludesParts/header.php";?>
+include "IncludesParts/header.php"; ?>
 
 <style>
     .shopping-cart {
@@ -7,7 +7,7 @@ include "IncludesParts/header.php";?>
         height: 423px;
         margin: 80px auto;
         background: #FFFFFF;
-        box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+        box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
         border-radius: 6px;
 
         display: flex;
@@ -30,8 +30,8 @@ include "IncludesParts/header.php";?>
     }
 
     .item:nth-child(3) {
-        border-top:  1px solid #E1E8EE;
-        border-bottom:  1px solid #E1E8EE;
+        border-top: 1px solid #E1E8EE;
+        border-bottom: 1px solid #E1E8EE;
     }
 
     /* Buttons -  Delete and Like */
@@ -74,9 +74,15 @@ include "IncludesParts/header.php";?>
     }
 
     @keyframes animate {
-        0%   { background-position: left;  }
-        50%  { background-position: right; }
-        100% { background-position: right; }
+        0% {
+            background-position: left;
+        }
+        50% {
+            background-position: right;
+        }
+        100% {
+            background-position: right;
+        }
     }
 
     /* Product Image */
@@ -101,6 +107,7 @@ include "IncludesParts/header.php";?>
     .description span:first-child {
         margin-bottom: 5px;
     }
+
     .description span:last-child {
         font-weight: 300;
         margin-top: 8px;
@@ -112,6 +119,7 @@ include "IncludesParts/header.php";?>
         padding-top: 20px;
         margin-right: 60px;
     }
+
     .quantity input {
         -webkit-appearance: none;
         border: none;
@@ -122,7 +130,7 @@ include "IncludesParts/header.php";?>
         font-weight: 300;
     }
 
-    button[class*=btn] {
+    button[class*=qbutton] {
         width: 30px;
         height: 30px;
         background-color: #E1E8EE;
@@ -130,15 +138,18 @@ include "IncludesParts/header.php";?>
         border: none;
         cursor: pointer;
     }
+
     .minus-btn img {
         margin-bottom: 3px;
     }
+
     .plus-btn img {
         margin-top: 2px;
     }
-    button:focus,
+
+    .qbutton:focus,
     input:focus {
-        outline:0;
+        outline: 0;
     }
 
     /* Total Price */
@@ -158,14 +169,17 @@ include "IncludesParts/header.php";?>
             height: auto;
             overflow: hidden;
         }
+
         .item {
             height: auto;
             flex-wrap: wrap;
             justify-content: center;
         }
+
         .image img {
             width: 50%;
         }
+
         .image,
         .quantity,
         .description {
@@ -173,6 +187,7 @@ include "IncludesParts/header.php";?>
             text-align: center;
             margin: 6px 0;
         }
+
         .buttons {
             margin-right: 20px;
         }
@@ -196,7 +211,7 @@ include "IncludesParts/header.php";?>
                     </div>
 
                     <div class="image">
-                        <img src="../Pages/assets/ico/item-1.png" alt="" />
+                        <img src="../Pages/assets/ico/item-1.png" alt=""/>
                     </div>
 
                     <div class="description">
@@ -206,18 +221,17 @@ include "IncludesParts/header.php";?>
                     </div>
 
                     <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt="" />
+                        <button class="plus-btn qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
                         </button>
                         <input type="text" name="name" value="1">
-                        <button class="../Pages/assets/ico/minus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt="" />
+                        <button class="minus-btn qbutton qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
                         </button>
                     </div>
 
                     <div class="total-price">$549</div>
                 </div>
-
                 <!-- Product #2 -->
                 <div class="item">
                     <div class="buttons">
@@ -236,12 +250,12 @@ include "IncludesParts/header.php";?>
                     </div>
 
                     <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt="" />
+                        <button class="plus-btn qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
                         </button>
                         <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt="" />
+                        <button class="minus-btn qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
                         </button>
                     </div>
 
@@ -256,7 +270,7 @@ include "IncludesParts/header.php";?>
                     </div>
 
                     <div class="image">
-                        <img src="../Pages/assets/ico/item-3.png" alt="" />
+                        <img src="../Pages/assets/ico/item-3.png" alt=""/>
                     </div>
 
                     <div class="description">
@@ -266,21 +280,21 @@ include "IncludesParts/header.php";?>
                     </div>
 
                     <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/plus.svg" alt="" />
+                        <button class="plus-btn qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/plus.svg" alt=""/>
                         </button>
                         <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                            <img src="../Pages/assets/ico/minus.svg" alt="" />
+                        <button class="minus-btn qbutton" type="button" name="button">
+                            <img src="../Pages/assets/ico/minus.svg" alt=""/>
                         </button>
                     </div>
 
                     <div class="total-price">$349</div>
                 </div>
             </div>
-<script src="assets/js/jquery-1.11.1.min.js"></script>
+            <script src="assets/js/jquery-1.11.1.min.js"></script>
             <script type="text/javascript">
-                $('.minus-btn').on('click', function(e) {
+                $('.minus-btn').on('click', function (e) {
                     e.preventDefault();
                     var $this = $(this);
                     var $input = $this.closest('div').find('input');
@@ -289,29 +303,29 @@ include "IncludesParts/header.php";?>
                     if (value > 1) {
                         value = value - 1;
                     } else {
-                        value = 0;
+                        value = 1;
                     }
 
                     $input.val(value);
 
                 });
 
-                $('.plus-btn').on('click', function(e) {
+                $('.plus-btn').on('click', function (e) {
                     e.preventDefault();
                     var $this = $(this);
                     var $input = $this.closest('div').find('input');
                     var value = parseInt($input.val());
 
-                    if (value < 100) {
+                    if (value < 10) {
                         value = value + 1;
                     } else {
-                        value =100;
+                        value = 10;
                     }
 
                     $input.val(value);
                 });
 
-                $('.like-btn').on('click', function() {
+                $('.like-btn').on('click', function () {
                     $(this).toggleClass('is-active');
                 });
             </script>
@@ -319,11 +333,62 @@ include "IncludesParts/header.php";?>
     </div>
 
     <div class="col-md-4">
-        <div class="container">
+        <div class="container" style="overflow: auto">
+            <div class="shopping-cart">
+                <div class="titles">
+                    Shipping Address
+                </div>
+                <div class="row">
 
+                    <form method="post" class="col-md-11">
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+
+
+                        <div class="form-outline">
+                            <input type="text" id="form6Example1" class="form-control" name="name" required
+                                   placeholder="Full name"/>
+                        </div>
+
+
+                        <div class="form-outline">
+                            <input type="number" id="form6Example2" class="form-control " name="phone" required
+                                   placeholder="Phone"/>
+                        </div>
+
+
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form6Example3" class="form-control" name="city" required
+                                   placeholder="City name"/>
+                        </div>
+
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form6Example4" class="form-control" name="address" required
+                                   placeholder="Full Address"/>
+                        </div>
+
+
+                        <!-- Checkbox -->
+                        <div class="form-check  mb-4">
+                            <input
+                                    class="form-check-input me-2"
+                                    type="checkbox"
+                                    value=""
+                                    id="c"
+                                    checked required
+                            />
+                            <label class="form-check-label" for="c"> I am sure to send this data </label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary">Place order</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 
-<?php include "IncludesParts/footer.php";?>
+<?php include "IncludesParts/footer.php"; ?>

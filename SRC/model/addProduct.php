@@ -5,7 +5,10 @@ $name = addslashes(strip_tags($_POST['name']));
 $des = addslashes(strip_tags($_POST['description']));
 $price = addslashes(strip_tags($_POST['price']));
 $category = addslashes(strip_tags($_POST['category']));
+
 $sid = $_SESSION['sellerID'];
+
+
 /*print_r($_FILES);*/
 $fileTmpPath = $_FILES['fileInput']['tmp_name'];
 $image_no = date("Y&m&d&h&i&s");
