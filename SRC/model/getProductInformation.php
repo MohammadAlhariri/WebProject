@@ -6,7 +6,5 @@ function getValues($id)
 
     $sql = "SELECT * FROM `product`where `product`.`productID`=$id;";
     $result = mysqli_query($connect->getdbconnect(), $sql);
-    $row = mysqli_fetch_array($result);
-
-return $row;
+    return mysqli_fetch_array($result);
 }
