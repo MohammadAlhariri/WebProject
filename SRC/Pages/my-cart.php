@@ -300,13 +300,13 @@ $productsOfOrder = getProductsByOrder();
                         <!-- 2 column grid layout with text inputs for the first and last names -->
 
 
-                        <div class="form-outline">
+                        <div class="form-outline mb-4">
                             <input type="text" id="form6Example1" class="form-control" name="name" required
                                    placeholder="Full name"/>
                         </div>
 
 
-                        <div class="form-outline">
+                        <div class="form-outline mb-4">
                             <input type="number" id="form6Example2" class="form-control " name="phone" required
                                    placeholder="Phone"/>
                         </div>
