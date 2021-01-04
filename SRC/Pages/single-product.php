@@ -61,7 +61,7 @@ $product=getValues($_GET["productID"]);
               <h4><?php echo $product["productName"];?></h4>
               <h6>$<?php echo $product["productPrice"];?></h6>
               <p><?php echo $product["productDescription"];?></p>
-              <span>7 left on stock</span>
+<!--              <span>7 left on stock</span>-->
               <form action="" method="get">
                 <label for="quantity">Quantity:</label>
                 <input name="quantity" type="quantity" class="quantity-text" id="quantity" 
