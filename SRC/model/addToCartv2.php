@@ -16,24 +16,24 @@ if ($orderState != null) {
 
 
 // if shipped and valid add new order
-if ($lastOrder == null || (empty($lastOrder))) {
+if ($lastOrder == null) {
     addNewOrder($userID, $productID, $quantity, $price);
     $orderID = getOrderId($userID);
     insertToOrderContent($orderID, $productID, $quantity, $price);
     header("Location: ../Pages/index.php?oid=$orderID");
 }
-else if (($lastOrder['orderState']=="Shipped" && $lastOrder["adminApproved"]=="Yes")
-    || ($lastOrder['orderState']=="Not Shipped" && $lastOrder["adminApproved"]=="Yes")) {
+else if ($lastOrder["adminApproved"]=="Yes")
+ {
 //    add new order and add first product to it
     addNewOrder($userID, $productID, $quantity, $price);
-    $orderID = getOrderId($userID);
-    insertToOrderContent($orderID, $productID, $quantity, $price);
+    $orderID = getLastOrder($userID);
+    insertToOrderContent($orderID["orderID"], $productID, $quantity, $price);
     header("Location: ../Pages/index.php?oid=$orderID");
 
 } else /*if (($orderState['isValid']) && (!$orderState['isShipped']))*/ {
 
-    $orderID = getOrderId($userID);
-    insertToOrderContent($orderID, $productID, $quantity, $price);
+    $orderID = getLastOrder($userID);
+    insertToOrderContent($orderID["orderID"], $productID, $quantity, $price);
     header("Location: ../Pages/index.php?var=$orderID");
 
 }
@@ -123,7 +123,7 @@ function getOrderId($userID)
 function getLastOrder($userID)
 {
     $connect = new DbConnection();
-    $sql1 = "SELECT * FROM `order` WHERE userID='$userID' order by `orderID` DESC limit 1";
+    $sql1 = "SELECT * FROM `order` WHERE userID='$userID' order by `orderID` DESC limit 1 ";
     $result = mysqli_query($connect->getdbconnect(), $sql1);
     $row = mysqli_fetch_array($result);
     return $row;
