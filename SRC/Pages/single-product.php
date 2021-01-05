@@ -61,14 +61,14 @@ $product=getValues($_GET["productID"]);
               <h4><?php echo $product["productName"];?></h4>
               <h6>$<?php echo $product["productPrice"];?></h6>
               <p><?php echo $product["productDescription"];?></p>
-<!--              <span>7 left on stock</span>-->
-              <form action="../model/addToCart.php" method="Post">
-                <label for="quantity">Quantity:</label>
-                <input name="quantity" type="quantity" class="quantity-text" id="quantity" 
-                	onfocus="if(this.value == '1') { this.value = ''; }" 
-                    onBlur="if(this.value == '') { this.value = '1';}"
-                    value="1"   >
-                  <input type="hidden" name="productID" value="<?php echo $product["productID"];?>">
+                <!--              <span>7 left on stock</span>-->
+                <form action="../model/addToCartv2.php" method="Post">
+                    <label for="quantity">Quantity:</label>
+                    <input name="quantity" type="quantity" class="quantity-text" id="quantity"
+                           onfocus="if(this.value == '1') { this.value = ''; }"
+                           onBlur="if(this.value == '') { this.value = '1';}"
+                           value="1">
+                    <input type="hidden" name="productID" value="<?php echo $product["productID"];?>">
                   <input type="hidden" name="price" value="<?php echo $product["productPrice"];?>">
                 <input type="submit" class="button" value="Order Now!">
               </form>
