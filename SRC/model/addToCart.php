@@ -45,8 +45,3 @@ function insertToOrderContent($userID, $productID, $quantity, $price)
     echo mysqli_error($connect->getdbconnect());
     echo "Record Added";
 }
-
-function updateOrderTotalPrice($orderID)
-{
-
-}
