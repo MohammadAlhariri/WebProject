@@ -7,7 +7,7 @@ $productID = addslashes(strip_tags($_POST['productID']));
 $price = addslashes(strip_tags($_POST['price']));
 $quantity = addslashes(strip_tags($_POST['quantity']));
 $orderState = getLastOrderState();
-
+$lastOrder=getLastOrder($userID);
 if ($orderState != null) {
     $isShipped = $orderState['isValid'];
     $isValid = $orderState['isShipped'];
@@ -16,30 +16,36 @@ if ($orderState != null) {
 
 
 // if shipped and valid add new order
-if ($orderState == null || (empty($orderState))) {
+if ($lastOrder == null || (empty($lastOrder))) {
+    addNewOrder($userID, $productID, $quantity, $price);
+    $orderID = getOrderId($userID);
+    insertToOrderContent($orderID, $productID, $quantity, $price);
+    header("Location: ../Pages/index.php?oid=$orderID");
+}
+else if (($lastOrder['orderState']=="Shipped" && $lastOrder["adminApproved"]=="Yes")
+    || ($lastOrder['orderState']=="Not Shipped" && $lastOrder["adminApproved"]=="Yes")) {
 //    add new order and add first product to it
     addNewOrder($userID, $productID, $quantity, $price);
     $orderID = getOrderId($userID);
     insertToOrderContent($orderID, $productID, $quantity, $price);
-    header("Location: ../Pages/index.php?");
+    header("Location: ../Pages/index.php?oid=$orderID");
 
-} else if (($orderState['isValid']) && (!$orderState['isShipped'])) {
+} else /*if (($orderState['isValid']) && (!$orderState['isShipped']))*/ {
 
     $orderID = getOrderId($userID);
     insertToOrderContent($orderID, $productID, $quantity, $price);
-    $ISVALID = $orderState['isValid'];
-    $OrderID = $orderState['orderID'];
-    header("Location: ../Pages/index.php?var=Blah");
+    header("Location: ../Pages/index.php?var=$orderID");
 
-} else {
-
-    addNewOrder($userID, $productID, $quantity, $price);
-    $orderID = getOrderId($userID);
-    insertToOrderContent($orderID, $productID, $quantity, $price);
-    $ISVALID = $orderState['isValid'];
-    $OrderID = $orderState['orderID'];
-    header("Location: ../Pages/index.php?var=$ISVALID");
 }
+// else {
+//
+//    addNewOrder($userID, $productID, $quantity, $price);
+//    $orderID = getOrderId($userID);
+//    insertToOrderContent($orderID, $productID, $quantity, $price);
+//    $ISVALID = $orderState['isValid'];
+//    $OrderID = $orderState['orderID'];
+//    header("Location: ../Pages/index.php?var=$ISVALID");
+//}
 
 //    if not shipped and valid
 //    get Order ID that not shipped and valid
@@ -109,11 +115,18 @@ function getOrderIDForUser($userID)
 function getOrderId($userID)
 {
     $connect = new DbConnection();
-    $sql1 = "SELECT * FROM `order` 
-            WHERE userID=$userID;";
+    $sql1 = "SELECT * FROM `order` WHERE userID=$userID  AND orderState='Not Shipped';";
     $result = mysqli_query($connect->getdbconnect(), $sql1);
     $row = mysqli_fetch_array($result);
     return $row["orderID"];
+}
+function getLastOrder($userID)
+{
+    $connect = new DbConnection();
+    $sql1 = "SELECT * FROM `order` WHERE userID='$userID' order by `orderID` DESC limit 1";
+    $result = mysqli_query($connect->getdbconnect(), $sql1);
+    $row = mysqli_fetch_array($result);
+    return $row;
 }
 
 // getProductsByOrder

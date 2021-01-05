@@ -22,6 +22,7 @@ function getLastOrderByUserIDfn()
     $sql = "SELECT `orderID` FROM `order` where `userID` = '$userID' AND `orderState` = 'Not Shipped' AND `adminApproved` = 'No' ORDER BY `orderID` DESC LIMIT 1;";
     $result = mysqli_query($connect->getdbconnect(), $sql);
     $row = mysqli_fetch_array($result);
-
+    if(empty($row))
+        return null;
     return $row["orderID"];
 }
