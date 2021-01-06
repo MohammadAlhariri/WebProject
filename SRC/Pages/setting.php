@@ -9,10 +9,16 @@ include "IncludesParts/header.php";
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 
 
-                    <img id="imgLogo" class="rounded-circle mt-5" src="<?php echo $_SESSION["userImage"]; ?>"
+                    <img id="imgLogo" class="rounded-circle mt-5" src="<?php
+                    if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') {
+                        echo $_SESSION["userImage"];
+                    } else if ($_SESSION['parent'] == 'seller') {
+                        echo $_SESSION["sellerImage"];
+                    }
+                    ?>"
                          onclick="document.getElementById('fileInput').click();"
                          width="250">
-                </div>
+                    <h3 class="p-2">Please click on profile photo to change it </h3></div>
             </div>
             <div class="col-md-8">
                 <div class="p-3 py-5">
@@ -25,127 +31,84 @@ include "IncludesParts/header.php";
                             </div>
                             <h6 class="text-right">Edit Profile</h6>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-6"><label for="name">Full Name</label></div>
-                            <div class="col-md-6"><input id="name" name="name" type="text" class="form-control"
-                                                         value="<?php echo $_SESSION["userName"]; ?>"
-                                                         placeholder="Enter Full Name"></div>
-                        </div>
+                        <?php
+                        if ($_SESSION['parent'] == "Users" || $_SESSION['parent'] == "Admins") {
+                            ?>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label for="name">Full Name</label></div>
+                                <div class="col-md-6"><input id="name" name="name" type="text" class="form-control"
+                                                             value="<?php echo $_SESSION["userName"]; ?>"
+                                                             placeholder="Enter Full Name"></div>
+                            </div>
 
 
-                        <div class="row mt-3">
-                            <div class="col-md-6"><label for="phone">Phone</label></div>
-                            <div class="col-md-6"><input disabled id="phone" name="phone" type="number"
-                                                         class="form-control"
-                                                         value="<?php echo $_SESSION["userPhone"]; ?>"
-                                                         placeholder="Enter Phone number"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-6"><label for="email">Email address</label></div>
-                            <div class="col-md-6"><input id="email" name="email" type="email" class="form-control"
-                                                         value="<?php echo $_SESSION["userEmail"]; ?>"
-                                                         placeholder="Enter Email"></div>
-                        </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="phone">Phone</label></div>
+                                <div class="col-md-6"><input disabled id="phone" name="phone" type="number"
+                                                             class="form-control"
+                                                             value="<?php echo $_SESSION["userPhone"]; ?>"
+                                                             placeholder="Enter Phone number"></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="email">Email address</label></div>
+                                <div class="col-md-6"><input id="email" name="email" type="email" class="form-control"
+                                                             value="<?php echo $_SESSION["userEmail"]; ?>"
+                                                             placeholder="Enter Email"></div>
+                            </div>
 
 
-                        <div class="row mt-3">
-                            <div class="col-md-6"><label for="address">Address</label></div>
-                            <div class="col-md-6"><input id="address" name="address" type="text"
-                                                         class="form-control"
-                                                         value="<?php echo $_SESSION["userAddress"]; ?>"
-                                                         placeholder="Enter Address"></div>
-                        </div>
-                        <div class="row mt-3">
-                            <input class="form-control" name="fileInput" id="fileInput" type="file" accept="image/*">
-                        </div>
-                        <div class="row p-2">
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="address">Address</label></div>
+                                <div class="col-md-6"><input id="address" name="address" type="text"
+                                                             class="form-control"
+                                                             value="<?php echo $_SESSION["userAddress"]; ?>"
+                                                             placeholder="Enter Address"></div>
+                            </div>
+                        <?php } else if ($_SESSION['parent'] == "seller") {
+                            ?>
+                            <div class="row mt-2">
+                                <div class="col-md-6"><label for="name">Full Name</label></div>
+                                <div class="col-md-6"><input id="name" name="name" type="text" class="form-control"
+                                                             value="<?php echo $_SESSION["sellerName"]; ?>"
+                                                             placeholder="Enter Full Name"></div>
+                            </div>
+
+
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="phone">Phone</label></div>
+                                <div class="col-md-6"><input id="phone" name="phone" type="number"
+                                                             class="form-control"
+                                                             value="<?php echo $_SESSION["sellerPhone"]; ?>"
+                                                             placeholder="Enter Phone number"></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="email">Email address</label></div>
+                                <div class="col-md-6"><input disabled id="email" name="email" type="email"
+                                                             class="form-control"
+                                                             value="<?php echo $_SESSION["sellerEmail"]; ?>"
+                                                             placeholder="Enter Email"></div>
+                            </div>
+
+
+                            <div class="row mt-3">
+                                <div class="col-md-6"><label for="address">Address</label></div>
+                                <div class="col-md-6"><input id="address" name="address" type="text"
+                                                             class="form-control"
+                                                             value="<?php echo $_SESSION["sellerAddress"]; ?>"
+                                                             placeholder="Enter Address"></div>
+                            </div>
+                        <?php } ?>
+                        <input name="fileInput" id="fileInput" type="file" accept="image/*"
+                               style="position: absolute;top: 20000px;">
+                        <div class="row">
                             <div class="col-md-2">
                                 <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
                                     Profile
                                 </button>
                             </div>
-
                         </div>
-
                     </form>
-                    <div class="container">
-                        <form action="">
-                            <div class="row">
-                                <div class="col-md-10">
 
-                                    <label>Current Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="password" value="" class="form-control"
-                                               placeholder="Current Password">
-                                    </div>
-                                    <label>New Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="password" value="" class="form-control" placeholder="New Password">
-                                    </div>
-                                    <label>Confirm Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="password" value="" class="form-control"
-                                               placeholder="Confirm Password">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
-                                        Password
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-                    <div class="container">
-                        <h4>set security questions to restore account if you forget password</h4>
-                        <form action="">
-                            <div class="row">
-                                <div class="col-md-10">
-
-                                    <label>Current Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="text" value="" class="form-control"
-                                               placeholder="What is your father name?">
-                                    </div>
-                                    <label>New Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="text" value="" class="form-control"
-                                               placeholder="What is your best color?">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
-                                        Password
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-                    <script>
-
-                        $(document).ready(function () {
-                            $('.pass_show').append('<span class="ptxt">Show</span>');
-                        });
-
-
-                        $(document).on('click', '.pass_show .ptxt', function () {
-
-                            $(this).text($(this).text() == "Show" ? "Hide" : "Show");
-
-                            $(this).prev().attr('type', function (index, attr) {
-                                return attr == 'password' ? 'text' : 'password';
-                            });
-
-                        });
-                    </script>
                 </div>
             </div>
         </div>
