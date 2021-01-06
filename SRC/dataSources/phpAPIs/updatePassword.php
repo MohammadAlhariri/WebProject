@@ -5,7 +5,9 @@ $uid = addslashes(strip_tags($_POST['uid']));
 
 include "connection.php";
 
-$sql = "UPDATE `user` SET `userPassword` = '$password' WHERE  `user`.`userID` = $uid ;";
+$sql = "UPDATE `user` 
+        SET `userPassword` = '$password' 
+        WHERE  `user`.`userID` = $uid ;";
 mysqli_query($con, $sql);
 echo mysqli_error($con);
 
