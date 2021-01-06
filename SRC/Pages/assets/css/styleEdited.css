@@ -19,21 +19,26 @@ body > div.container.tm-mt-big.tm-mb-big > div > div > div > div.row.mb-2 > div 
     border: none
 }
 
-/*.profile-button:hover {*/
-/*    background: #682773*/
-/*}*/
+.pass_show{position: relative}
 
-/*.profile-button:focus {*/
-/*    background: #682773;*/
-/*    box-shadow: none*/
-/*}*/
+.pass_show .ptxt {
 
-/*.profile-button:active {*/
-/*    background: #682773;*/
-/*    box-shadow: none*/
-/*}*/
+    position: absolute;
 
-/*.back:hover {*/
-/*    color: #682773;*/
-/*    cursor: pointer*/
-/*}*/
+    top: 50%;
+
+    right: 10px;
+
+    z-index: 1;
+
+    color: #f36c01;
+
+    margin-top: -10px;
+
+    cursor: pointer;
+
+    transition: .3s ease all;
+
+}
+
+.pass_show .ptxt:hover{color: #333333;}

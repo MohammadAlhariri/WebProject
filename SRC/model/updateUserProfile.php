@@ -14,7 +14,7 @@ if ($Parent == 'Users' || $Parent == 'Admins') {
 //    getUserInfo($_SESSION["userPhone"]);
 } else if ($Parent == 'seller') {
 
-    updateSellerProfile($Name, $Phone, $Email, $Address, $fileTmpPath);
+    updateSellerProfile($Name, $Phone, $Email, $Address);
 //    getUserInfo($_SESSION["sellerEmail"]);
 }
 /*
@@ -129,7 +129,7 @@ function updateSellerProfile($sellerName, $sellerPhone, $sellerEmail, $sellerAdd
     mysqli_close($connect->getdbconnect());
 
 }*/
-function updateUserProfile($userName, $userPhone, $userEmail, $userAddress, $fileTmpPath)
+function updateUserProfile($userName, $userPhone, $userEmail, $userAddress)
 {
     $connect = new DbConnection();
     $userID = $_SESSION['userID'];
@@ -138,7 +138,7 @@ function updateUserProfile($userName, $userPhone, $userEmail, $userAddress, $fil
     if (!file_exists($_FILES['fileInput']['tmp_name']) || !is_uploaded_file($_FILES['fileInput']['tmp_name'])) {
         // without update image;
         $sql = "UPDATE `user` SET `userName` = '$userName', `userPhone` = '$userPhone'
-                , `userEmail` = '$userEmail', `userAddress` = '$userAddress',
+                , `userEmail` = '$userEmail', `userAddress` = '$userAddress'
                   WHERE `user`.`userID` = '$userID'";
     } else {
         // with update image;
@@ -155,7 +155,7 @@ function updateUserProfile($userName, $userPhone, $userEmail, $userAddress, $fil
             $uploadFileDir = '../uploads/useImg';
             $dest_path = $uploadFileDir . $newFileName;
 
-            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+            if (move_uploaded_file($target_file, $dest_path)) {
                 $uploadOk = 1;
             } else {
                 $uploadOk = 0;
