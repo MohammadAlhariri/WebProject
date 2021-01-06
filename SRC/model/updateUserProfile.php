@@ -42,7 +42,6 @@ if (!file_exists($_FILES['fileInput']['tmp_name']) || !is_uploaded_file($_FILES[
 
         $image_no = date("Y&m&d&h&i&s");//or Anything You Need
         $path = "uploads/useImg/" . $image_no . ".jpg";
-
         $sql = "UPDATE `user` SET `userName` = '$userName', `userPhone` = '$userPhone', `userEmail` = '$userEmail', `userAddress` = '$userAddress', `UserImage` = '$path'   WHERE `user`.`userID` = '$userID'";
 
     }
@@ -52,13 +51,16 @@ if (!file_exists($_FILES['fileInput']['tmp_name']) || !is_uploaded_file($_FILES[
 $result = mysqli_query($connect->getdbconnect(), $sql);
 $msg = mysqli_error($connect->getdbconnect());
 if ($result) {
-    //echo "Record Added";
     $msg = 1;
+    header("Location: ../Pages/profile-setting.php?msg=$msg");
 } else {
+    $msg = 1;
+    header("Location: ../Pages/profile-setting.php?msg=$msg");
     $msg = mysqli_error($connect->getdbconnect());
 
 }
 
 mysqli_close($connect->getdbconnect());
+
 // header("Location: ../Pages/user-profile.php?msg=$msg");
 // must forwarding to user Setting profile
