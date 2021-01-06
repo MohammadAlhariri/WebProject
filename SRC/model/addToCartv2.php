@@ -6,13 +6,13 @@ $userID = $_SESSION['userID'];
 $productID = addslashes(strip_tags($_POST['productID']));
 $price = addslashes(strip_tags($_POST['price']));
 $quantity = addslashes(strip_tags($_POST['quantity']));
-$orderState = getLastOrderState();
+//$orderState = getLastOrderState();
 $lastOrder=getLastOrder($userID);
-if ($orderState != null) {
-    $isShipped = $orderState['isValid'];
-    $isValid = $orderState['isShipped'];
-    $orderID = $orderState['orderID'];
-}
+//if ($orderState != null) {
+//    $isShipped = $orderState['isValid'];
+//    $isValid = $orderState['isShipped'];
+//    $orderID = $orderState['orderID'];
+//}
 
 
 // if shipped and valid add new order
@@ -27,14 +27,16 @@ else if ($lastOrder["adminApproved"]=="Yes")
 //    add new order and add first product to it
     addNewOrder($userID, $productID, $quantity, $price);
     $orderID = getLastOrder($userID);
-    insertToOrderContent($orderID["orderID"], $productID, $quantity, $price);
-    header("Location: ../Pages/index.php?oid=$orderID");
+    $id=$orderID["orderID"];
+    insertToOrderContent($id, $productID, $quantity,123);
+    header("Location: ../Pages/index.php?oid=$id");
 
 } else /*if (($orderState['isValid']) && (!$orderState['isShipped']))*/ {
 
     $orderID = getLastOrder($userID);
-    insertToOrderContent($orderID["orderID"], $productID, $quantity, $price);
-    header("Location: ../Pages/index.php?var=$orderID");
+    $id=$orderID["orderID"];
+    insertToOrderContent($id, $productID, $quantity, 123);
+    header("Location: ../Pages/index.php?var=$id");
 
 }
 // else {
@@ -96,30 +98,30 @@ function insertToOrderContent($userID, $productID, $quantity, $price)
 
 // get orderID for new Order by userID that been created in addNewOrder
 // this function take user ID and return last order id for order that not valid nor shipped
-function getOrderIDForUser($userID)
-{
-    $connect = new DbConnection();
-    $sql = "SELECT * FROM `order` 
-             WHERE userID='$userID'  
-             AND adminApproved ='Not Valid'
-             AND orderState ='Not Shipped';"; // Check done
-    $result = mysqli_query($connect->getdbconnect(), $sql);
-    $row = mysqli_fetch_array($result);
-    if (empty($row)) {
-        return null;
-    }
-    return $row["orderID"];
+//function getOrderIDForUser($userID)
+//{
+//    $connect = new DbConnection();
+//    $sql = "SELECT * FROM `order`
+//             WHERE userID='$userID'
+//             AND adminApproved ='Not Valid'
+//             AND orderState ='Not Shipped';"; // Check done
+//    $result = mysqli_query($connect->getdbconnect(), $sql);
+//    $row = mysqli_fetch_array($result);
+//    if (empty($row)) {
+//        return null;
+//    }
+//    return $row["orderID"];
+//
+//}
 
-}
-
-function getOrderId($userID)
-{
-    $connect = new DbConnection();
-    $sql1 = "SELECT * FROM `order` WHERE userID=$userID  AND orderState='Not Shipped';";
-    $result = mysqli_query($connect->getdbconnect(), $sql1);
-    $row = mysqli_fetch_array($result);
-    return $row["orderID"];
-}
+//function getOrderId($userID)
+//{
+//    $connect = new DbConnection();
+//    $sql1 = "SELECT * FROM `order` WHERE userID=$userID  AND orderState='Not Shipped';";
+//    $result = mysqli_query($connect->getdbconnect(), $sql1);
+//    $row = mysqli_fetch_array($result);
+//    return $row["orderID"];
+//}
 function getLastOrder($userID)
 {
     $connect = new DbConnection();
@@ -156,57 +158,57 @@ function getProductsByOrder()
 
 //getLastOrderByUserID
 // this function must return last order ID
-function getLastOrderByUserID()
-{
-    $userID = $_SESSION["userID"];
-    $connect = new DbConnection();
-    $sql = "SELECT `orderID` 
-                FROM `order` where `userID` = '$userID' 
-                AND `orderState` = 'Not Shipped' 
-                AND `adminApproved` = 'No' 
-                ORDER BY `orderID` DESC LIMIT 1;";
-    $result = mysqli_query($connect->getdbconnect(), $sql);
-    $row = mysqli_fetch_array($result);
-
-    return $row["orderID"];
-}
+//function getLastOrderByUserID()
+//{
+//    $userID = $_SESSION["userID"];
+//    $connect = new DbConnection();
+//    $sql = "SELECT `orderID`
+//                FROM `order` where `userID` = '$userID'
+//                AND `orderState` = 'Not Shipped'
+//                AND `adminApproved` = 'No'
+//                ORDER BY `orderID` DESC LIMIT 1;";
+//    $result = mysqli_query($connect->getdbconnect(), $sql);
+//    $row = mysqli_fetch_array($result);
+//
+//    return $row["orderID"];
+//}
 
 // getLastOrderState
 // this function must return orderState[isValid, isShipped, orderId]
-function getLastOrderState()
-{
-    $userID = $_SESSION["userID"];
-    $connect = new DbConnection();
-    $sql = "SELECT `orderID`, `orderState`,`adminApproved`
-            FROM `order`
-            where `userID` = '$userID'
-            ORDER BY `orderID` DESC
-            LIMIT 1;"; // Check done
-    $result = mysqli_query($connect->getdbconnect(), $sql);
-    $row = mysqli_fetch_array($result);
-    if (empty($row))
-        return null;
-
-    $orderState['isShipped'] = $row["orderState"] == "Not Shipped";
-    $orderState['isValid'] = $row["adminApproved"] == "Not Valid";
-    $ISVALID = $orderState['isValid'];
-    $OrderID = $orderState['orderID'] = $row["orderID"];
-    header("Location: ../Pages/index.php?var=$ISVALID");
-
-    return $orderState;
-}
+//function getLastOrderState()
+//{
+//    $userID = $_SESSION["userID"];
+//    $connect = new DbConnection();
+//    $sql = "SELECT `orderID`, `orderState`,`adminApproved`
+//            FROM `order`
+//            where `userID` = '$userID'
+//            ORDER BY `orderID` DESC
+//            LIMIT 1;"; // Check done
+//    $result = mysqli_query($connect->getdbconnect(), $sql);
+//    $row = mysqli_fetch_array($result);
+//    if (empty($row))
+//        return null;
+//
+//    $orderState['isShipped'] = $row["orderState"] == "Not Shipped";
+//    $orderState['isValid'] = $row["adminApproved"] == "Not Valid";
+//    $ISVALID = $orderState['isValid'];
+//    $OrderID = $orderState['orderID'] = $row["orderID"];
+//    header("Location: ../Pages/index.php?var=$ISVALID");
+//
+//    return $orderState;
+//}
 
 // getOrderTotalPrice
 // take order ID and modify order Total price
 function getOrderTotalPrice($orderID)
 {
     $connect = new DbConnection();
-    $sql = "SELECT SUM(order_content.quantity * order_content.price) as 'total'
+    $sql = "SELECT SUM(`order_content`.`quantity` * `order_content`.`price`) as 'total'
                FROM order_content
                WHERE orderID = $orderID;";
 
     $result = mysqli_query($connect->getdbconnect(), $sql);
     $row = mysqli_fetch_array($result);
-    $total = $row['total'];
-    return $total($total);
+    $total = $row["total"];
+    return $total;
 }
