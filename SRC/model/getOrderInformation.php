@@ -1,5 +1,4 @@
 <?php
-
 function getValues($orderID)
 {
     include("../dataSources/config/connectWithRemoteDB.php");

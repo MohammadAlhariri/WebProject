@@ -1,6 +1,6 @@
 <?php
 include("IncludesParts/header.php");
-require_once "../model/getAllunvalidProduct.php";
+require_once "../model/getAllUnValidProduct.php";
 require_once "../model/getSellerNameByID.php";
 
 $products = getValues();
@@ -34,8 +34,8 @@ $products = getValues();
                                 <div class="content row">
                                     <div class="main">
                                         <div class="container text-center">
-                                        <h4 class="text-center"><?php echo $row["productDescription"]; ?></h4>
-                                        <p class="text-center"><?php echo  $row["productDate"]; ?></p></div>
+                                            <h4 class="text-center"><?php echo $row["productDescription"]; ?></h4>
+                                            <p class="text-center"><?php echo $row["productDate"]; ?></p></div>
 
                                     </div>
                                 </div>
@@ -43,7 +43,8 @@ $products = getValues();
                                 <div class="footer row">
 
                                     <div class="social-links text-center row">
-                                        <form class="col-md-3 offset-md-2" action="../model/removeByID.php" method="post">
+                                        <form class="col-md-3 offset-md-2" action="../model/removeByID.php"
+                                              method="post">
                                             <input type="hidden" name="id"
                                                    value="<?php echo $row["productID"]; ?>"/>
                                             <input value="Decline" type="submit" class="btn btn-outline-primary">
@@ -59,8 +60,6 @@ $products = getValues();
                         </div> <!-- end card -->
                     </div> <!-- end card-container -->
                 </div> <!-- end col sm 3 -->
-
-
             <?php } ?>
         </div>
 

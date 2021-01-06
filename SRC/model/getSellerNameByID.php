@@ -6,5 +6,5 @@ function getName($sellerID)
     $result = mysqli_query($connect2->getdbconnect(), $sql);
     $row = mysqli_fetch_array($result);
     mysqli_close($connect2->getdbconnect());
-    return $row["sellerName"];
+    return $row['sellerName'];
 }

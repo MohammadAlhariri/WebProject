@@ -9,9 +9,7 @@ if ($Parent == 'Users' || $Parent == 'Admins') {
     updateUserPassword($password);
 
 } else if ($Parent == 'seller') {
-
     updateSellerPassword($password);
-
 }
 
 function updateUserPassword($password)

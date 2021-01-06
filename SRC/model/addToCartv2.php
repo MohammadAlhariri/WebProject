@@ -8,19 +8,21 @@ $quantity = addslashes(strip_tags($_POST['quantity']));
 $lastOrder = getLastOrder($userID);
 
 // if shipped and valid add new order
+
 if ($lastOrder == null) {
-    addNewOrder($userID, $productID, $quantity);
+
+    addNewOrder($userID);
     $orderID = getOrderId($userID);
     insertToOrderContent($orderID, $productID, $quantity);
     header("Location: ../Pages/index.php?oid=$orderID");
+
 } else if ($lastOrder["adminApproved"] == "Yes") {
 
 //    add new order and add first product to it
-    addNewOrder($userID, $productID, $quantity);
+    addNewOrder($userID);
     $orderID = getLastOrder($userID);
     $id = $orderID["orderID"];
     insertToOrderContent($id, $productID, $quantity);
-    header("Location: ../Pages/index.php?oid=$id");
 
 } else {
 
@@ -35,13 +37,11 @@ if ($lastOrder == null) {
 function addNewOrder($userID)
 {
     $connect = new DbConnection();
-    /*    $total = getOrderTotalPrice($orderID);
-    $totalPrice = $total['total'];*/
     $addOrder = "INSERT INTO `order`(`orderDate`, `userID`,`orderState`, `adminApproved`) 
                  VALUES (NOW(),'$userID','Not Shipped', 'No');"; // Check done
     mysqli_query($connect->getdbconnect(), $addOrder);
     echo mysqli_error($connect->getdbconnect());
-    header("Location: ../Pages/index.php");
+//    header("Location: ../Pages/index.php");
 }
 
 // insertToOrderContent
@@ -56,35 +56,26 @@ function insertToOrderContent($orderID, $productID, $quantity)
     getOrderTotalPrice("$orderID");
     echo mysqli_error($connect->getdbconnect());
     echo "Record Added";
+    header("Location: ../Pages/index.php");
+
 }
 
 // get orderID for new Order by userID that been created in addNewOrder
+// this will check if there is last order and return orderID or null if empty
 function getLastOrder($userID)
 {
     $connect = new DbConnection();
-    $sql1 = "SELECT * FROM `order` WHERE userID='$userID' order by `orderID` DESC limit 1 ";
+    $sql1 = "SELECT * 
+            FROM `order` 
+            WHERE userID='$userID' 
+            order by `orderID` 
+            DESC limit 1;";
     $result = mysqli_query($connect->getdbconnect(), $sql1);
     $row = mysqli_fetch_array($result);
     return $row;
 }
 
-// getProductsByOrder
-function getProductsByOrder()
-{
-    $orderID = getLastOrderByUserID();
-    $connect = new DbConnection();
-    $sql = "SELECT `order_content`.*, product.*, `order`.orderTotal
-            FROM `order_content`,
-                 `product`,
-                 `order`
-            WHERE `order_content`.orderID = `order_content`.orderID
-              AND `order_content`.orderID = '$orderID'
-              AND `order`.orderID = '$orderID'
-              AND product.productID = `order_content`.productID;";
-    $result = mysqli_query($connect->getdbconnect(), $sql);
-    return $result;
-}
-
+// getProductPrice
 function getProductPrice($productID)
 {
     $connect = new DbConnection();
@@ -111,6 +102,20 @@ function getOrderTotalPrice($orderID)
             WHERE orderID = '$orderID';";
     $result = mysqli_query($connect->getdbconnect(), $sql);
     $row = mysqli_fetch_array($result);
+}
+
+//getOrderID
+// this will return all Not Shipped Order
+function getOrderId($userID)
+{
+    $connect = new DbConnection();
+    $sql1 = "SELECT *
+             FROM `order`
+             WHERE userID = '$userID'
+               AND orderState = 'Not Shipped';";
+    $result = mysqli_query($connect->getdbconnect(), $sql1);
+    $row = mysqli_fetch_array($result);
+    return $row["orderID"];
 }
 
 /* getLastOrderState
@@ -171,11 +176,20 @@ function getLastOrderByUserID()
     return $row["orderID"];
 }*/ // getLastOrderByUserID
 
-/*function getOrderId($userID)
+/*
+function getProductsByOrder()
 {
+    $orderID = getLastOrderByUserID();
     $connect = new DbConnection();
-    $sql1 = "SELECT * FROM `order` WHERE userID=$userID  AND orderState='Not Shipped';";
-    $result = mysqli_query($connect->getdbconnect(), $sql1);
-    $row = mysqli_fetch_array($result);
-    return $row["orderID"];
-}*/ // getOrderId
+    $sql = "SELECT `order_content`.*, product.*, `order`.orderTotal
+            FROM `order_content`,
+                 `product`,
+                 `order`
+            WHERE `order_content`.orderID = `order_content`.orderID
+              AND `order_content`.orderID = '$orderID'
+              AND `order`.orderID = '$orderID'
+              AND product.productID = `order_content`.productID;";
+    $result = mysqli_query($connect->getdbconnect(), $sql);
+    return $result;
+}*/ // getProductsByOrder
+

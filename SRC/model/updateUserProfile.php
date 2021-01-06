@@ -1,6 +1,9 @@
 <?php
+
 require_once("../dataSources/config/connectWithRemoteDB.php");
+//include("../model/insOFConnect.php");
 session_start();
+
 $Parent = $_SESSION['parent'];
 $Name = addslashes(strip_tags($_POST['name']));
 $Phone = addslashes(strip_tags($_POST['phone'])); // for seller
