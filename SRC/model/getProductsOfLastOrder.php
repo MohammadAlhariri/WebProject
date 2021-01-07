@@ -1,9 +1,9 @@
 <?php
 include("../dataSources/config/connectWithRemoteDB.php");
+
 function getProductsByOrder()
 {
-
-    $oid = getLastOrderByUserIDfn();
+    $oid = getLastOrderByUserID();
     $connect = new DbConnection();
     $sql = "SELECT `product`.*,`order`.`orderTotal`,`order_content`.`quantity`,`order_content`.`price` ,`order`.orderID 
     FROM `product`,`order`,`order_content` 
@@ -15,14 +15,19 @@ function getProductsByOrder()
     return $result;
 }
 
-function getLastOrderByUserIDfn()
+function getLastOrderByUserID()
 {
     $userID = $_SESSION["userID"];
     $connect = new DbConnection();
-    $sql = "SELECT `orderID` FROM `order` where `userID` = '$userID' AND `orderState` = 'Not Shipped' AND `adminApproved` = 'No' ORDER BY `orderID` DESC LIMIT 1;";
+    $sql = "SELECT `orderID`
+            FROM `order` where `userID` = '$userID' 
+               AND `orderState` = 'Not Shipped' 
+               AND `adminApproved` = 'No' 
+            ORDER BY `orderID` 
+               DESC LIMIT 1;";
     $result = mysqli_query($connect->getdbconnect(), $sql);
     $row = mysqli_fetch_array($result);
-    if(empty($row))
+    if (empty($row))
         return null;
     return $row["orderID"];
 }
