@@ -18,7 +18,7 @@ include "IncludesParts/header.php";
                     ?>"
                          onclick="document.getElementById('fileInput').click();"
                          width="250">
-                    <h3 class="p-2">Please click on profile photo to change it </h3></div>
+                    </div>
             </div>
             <div class="col-md-8">
                 <div class="p-3 py-5">
@@ -90,7 +90,7 @@ include "IncludesParts/header.php";
                             </div>
 
 
-                            <div class="row mt-3">
+                            <div class="row mt-3 p-2">
                                 <div class="col-md-6"><label for="address">Address</label></div>
                                 <div class="col-md-6"><input id="address" name="address" type="text"
                                                              class="form-control"
@@ -98,9 +98,8 @@ include "IncludesParts/header.php";
                                                              placeholder="Enter Address"></div>
                             </div>
                         <?php } ?>
-                        <input name="fileInput" id="fileInput" type="file" accept="image/*"
-                               style="position: absolute;top: 20000px;">
-                        <div class="row">
+                        <input class="form-control p-2" name="fileInput" id="fileInput" type="file" accept="image/*">
+                        <div class="row p-2">
                             <div class="col-md-2">
                                 <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
                                     Profile
@@ -108,7 +107,86 @@ include "IncludesParts/header.php";
                             </div>
                         </div>
                     </form>
+                    <div class="container">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-10">
 
+                                    <label>Current Password</label>
+                                    <div class="form-group pass_show">
+                                        <input type="password" value="" class="form-control"
+                                               placeholder="Current Password">
+                                    </div>
+                                    <label>New Password</label>
+                                    <div class="form-group pass_show">
+                                        <input type="password" value="" class="form-control" placeholder="New Password">
+                                    </div>
+                                    <label>Confirm Password</label>
+                                    <div class="form-group pass_show">
+                                        <input type="password" value="" class="form-control"
+                                               placeholder="Confirm Password">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
+                                        Password
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+<?php
+if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') {?>
+                    <div class="container">
+                        <h4>set security questions to restore account if you forget password</h4>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-10">
+
+                                    <label>Current Password</label>
+                                    <div class="form-group pass_show">
+                                        <input type="text" value="" class="form-control"
+                                               placeholder="What is your father name?">
+                                    </div>
+                                    <label>New Password</label>
+                                    <div class="form-group pass_show">
+                                        <input type="text" value="" class="form-control"
+                                               placeholder="What is your best color?">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
+                                        Password
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div><?php}?>
+                    <script>
+
+                        $(document).ready(function () {
+                            $('.pass_show').append('<span class="ptxt">Show</span>');
+                        });
+
+
+                        $(document).on('click', '.pass_show .ptxt', function () {
+
+                            $(this).text($(this).text() == "Show" ? "Hide" : "Show");
+
+                            $(this).prev().attr('type', function (index, attr) {
+                                return attr == 'password' ? 'text' : 'password';
+                            });
+
+                        });
+                    </script>
                 </div>
             </div>
         </div>
