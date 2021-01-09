@@ -66,6 +66,7 @@ include "IncludesParts/header.php";
                             </div>
                         <?php } else if ($_SESSION['parent'] == "seller") {
                             ?>
+
                             <div class="row mt-2">
                                 <div class="col-md-6"><label for="name">Full Name</label></div>
                                 <div class="col-md-6"><input id="name" name="name" type="text" class="form-control"
@@ -110,64 +111,91 @@ include "IncludesParts/header.php";
                             </div>
                         </div>
                     </form>
-                    <div class="container">
-                        <form action="../model/updatePassword.php" method="POST">
-                            <div class="row">
-                                <div class="col-md-10">
 
-                                    <label>New Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="password" name="password" class="form-control"
-                                               placeholder="New Password">
-                                    </div>
-                                    <label>Confirm Password</label>
-                                    <div class="form-group pass_show">
-                                        <input type="password" name="repassword" class="form-control"
-                                               placeholder="Confirm Password">
-                                    </div>
 
+                    <div class="row mt-2 border-top  p-2">
+                        <div class="container">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#passw"
+                                    aria-expanded="false" aria-controls="passw">
+                                Update Password <i class="fa fa-key m-2 " style="color: #e2622b ;font-size: 20px;font-weight: bold"></i>
+                            </button>
+                            <div class="collapse" id="passw">
+
+                                <div class="container">
+                                    <form action="../model/updatePassword.php" method="POST">
+                                        <div class="row">
+                                            <div class="col-md-10">
+
+                                                <label>New Password</label>
+                                                <div class="form-group pass_show">
+                                                    <input type="password" name="password" class="form-control"
+                                                           placeholder="New Password">
+                                                </div>
+                                                <label>Confirm Password</label>
+                                                <div class="form-group pass_show">
+                                                    <input type="password" name="repassword" class="form-control"
+                                                           placeholder="Confirm Password">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <button name="submit" type="submit"
+                                                        class="btn btn-primary text-uppercase">Update
+                                                    Password
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
-                                        Password
-                                    </button>
-                                </div>
-
-                            </div>
-                        </form>
+                        </div>
                     </div>
                     <?php
                     if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') { ?>
-                        <div class="container">
-                            <h4>Set security questions to restore account if you forget password</h4>
-                            <form action="../model/updateSecurityAnswers.php" method="post">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <label>First Answer</label>
-                                        <div class="form-group pass_show">
-                                            <input type="text" value="" name="answer1" class="form-control"
-                                                   placeholder="What is your father name?">
-                                        </div>
-                                        <label>Second Answer</label>
-                                        <div class="form-group pass_show">
-                                            <input type="text" value="" name="answer2" class="form-control"
-                                                   placeholder="What is your best color?">
-                                        </div>
+                        <div class="row mt-2 border-top  p-2">
+                            <div class="container">
+                                <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                        data-target="#security"
+                                        aria-expanded="false" aria-controls="security">
+                                    Set security Questions   <i class="fa fa-lock m-2" style="color: #e2622b; font-size: 20px;font-weight: bold"></i>
+                                </button>
+                                <div class="collapse" id="security">
+                                    <div class="container">
+                                        <h4>Set security questions to restore account if you forget password</h4>
+                                        <form action="../model/updateSecurityAnswers.php" method="post">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <label>First Answer</label>
+                                                    <div class="form-group ">
+                                                        <input type="text" value="" name="answer1" class="form-control"
+                                                               placeholder="What is your father name?">
+                                                    </div>
+                                                    <label>Second Answer</label>
+                                                    <div class="form-group ">
+                                                        <input type="text" value="" name="answer2" class="form-control"
+                                                               placeholder="What is your best color?">
+                                                    </div>
 
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <button name="submit" type="submit"
+                                                            class="btn btn-primary text-uppercase">
+                                                        Update
+                                                        Password
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <button name="submit" type="submit" class="btn btn-primary text-uppercase">
-                                            Update
-                                            Password
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </form>
+                            </div>
                         </div><?php } ?>
                     <script>
 
