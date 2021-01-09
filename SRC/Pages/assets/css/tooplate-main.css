@@ -223,7 +223,7 @@ body > nav
 /* Subscribe Style */
 .subscribe-form {
 	background-color: #3a8bcd;
-	padding: 80px 0px;
+	padding: 20px 0px;
 	text-align: center;
 }
 .subscribe-form .section-heading  {
@@ -311,7 +311,7 @@ body > nav
 }
 .footer .footer-menu a {
 	font-size: 13px;
-	color: #7a7a7a;
+	color: #ffffff;
 	text-transform: uppercase;
 	transition: all 0.5s;
 }
@@ -338,7 +338,8 @@ body > nav
 	transition: all 0.5s;
 }
 .footer .social-icons a:hover {
-	background-color: #3a8bcd;
+	background-color: white;
+	color: black;
 }
 
 /* Sub Footer Style */

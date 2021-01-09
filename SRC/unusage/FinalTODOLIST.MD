@@ -2,7 +2,7 @@ General ChangeListManager:
 
 - New logo
 - Redesign header:
-- Redesign footer: divide as book
+- Redesign footer: divide as book -> Done
 
 - User Package:
 
