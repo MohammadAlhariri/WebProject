@@ -1,5 +1,5 @@
 <?php
-function getProductsByOrder($oid){
+function getProductsByOrder2($oid){
 
     $sql="SELECT `product`.*,`order`.`orderTotal`,`order_content`.`quantity`,`order_content`.`price` 
     FROM `product`,`order`,`order_content` 
