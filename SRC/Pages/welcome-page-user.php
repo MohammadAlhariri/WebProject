@@ -45,7 +45,7 @@ session_start();
 
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1>Wellcome to our eCommerce Website</h1>
+                    <h1>Welcome to our eCommerce Website</h1>
                     <div class="description">
                         <p>
                             Please Choose the <strong>"login or register forms"</strong> To Enter to our website.

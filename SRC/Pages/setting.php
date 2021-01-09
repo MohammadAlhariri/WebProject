@@ -25,11 +25,13 @@ include "IncludesParts/header.php";
 
                     <form action="../model/updateUserProfile.php" method="post" enctype="multipart/form-data">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="d-flex flex-row align-items-center back"><i
+                            <div class="d-flex flex-row align-items-center  back"><i
                                         class="fa fa-long-arrow-left mr-1 mb-1"></i>
                                 <h6>Back to home</h6>
                             </div>
-                            <h6 class="text-right">Edit Profile</h6>
+                            <div class="col-md-12 barStyle p-2 ">
+                                <h6 class="">Edit Profile</h6>
+                            </div>
                         </div>
                         <?php
                         if ($_SESSION['parent'] == "Users" || $_SESSION['parent'] == "Admins") {
@@ -40,7 +42,6 @@ include "IncludesParts/header.php";
                                                              value="<?php echo $_SESSION["userName"]; ?>"
                                                              placeholder="Enter Full Name"></div>
                             </div>
-
 
                             <div class="row mt-3">
                                 <div class="col-md-6"><label for="phone">Phone</label></div>
@@ -55,7 +56,6 @@ include "IncludesParts/header.php";
                                                              value="<?php echo $_SESSION["userEmail"]; ?>"
                                                              placeholder="Enter Email"></div>
                             </div>
-
 
                             <div class="row mt-3">
                                 <div class="col-md-6"><label for="address">Address</label></div>
@@ -90,7 +90,6 @@ include "IncludesParts/header.php";
                                                              placeholder="Enter Email"></div>
                             </div>
 
-
                             <div class="row mt-3 p-2">
                                 <div class="col-md-6"><label for="address">Address</label></div>
                                 <div class="col-md-6"><input id="address" name="address" type="text"
@@ -99,16 +98,24 @@ include "IncludesParts/header.php";
                                                              placeholder="Enter Address"></div>
                             </div>
                         <?php } ?>
-                        <div class="form-group m-1 p-2 fileTo">
-                            Upload Profile Picture
-                            <input class="form-control hide_file" name="fileInput" id="fileInput" type="file"
-                                   accept="image/*">
-                        </div>
-                        <div class="row p-2">
+                        <div class="row">
+                            <div class="col-md-2 offset-8">
+                                <div class="form-group m-1 p-2 fileTo">
+                                    Upload Picture
+                                    <input class="form-control hide_file" name="fileInput" id="fileInput"
+                                           type="file"
+                                           accept="image/*">
+                                </div>
+                            </div>
                             <div class="col-md-2">
-                                <button name="submit" type="submit" class="btn btn-primary text-uppercase p-2">Update
-                                    Profile
-                                </button>
+                                <div class="row p-2">
+                                    <div class="col-md-2 ">
+                                        <button name="submit" type="submit" class="btn btn-primary p-2">
+                                            Update
+                                            Profile
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -119,7 +126,8 @@ include "IncludesParts/header.php";
                             <button class="btn btn-primary" type="button" data-toggle="collapse"
                                     data-target="#passw"
                                     aria-expanded="false" aria-controls="passw">
-                                Update Password <i class="fa fa-key m-2 " style="color: #e2622b ;font-size: 20px;font-weight: bold"></i>
+                                Update Password <i class="fa fa-key m-2 "
+                                                   style="color: #e2622b ;font-size: 20px;font-weight: bold"></i>
                             </button>
                             <div class="collapse" id="passw">
 
@@ -144,7 +152,7 @@ include "IncludesParts/header.php";
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <button name="submit" type="submit"
-                                                        class="btn btn-primary text-uppercase">Update
+                                                        class="btn btn-primary ">Update
                                                     Password
                                                 </button>
                                             </div>
@@ -162,7 +170,8 @@ include "IncludesParts/header.php";
                                 <button class="btn btn-primary" type="button" data-toggle="collapse"
                                         data-target="#security"
                                         aria-expanded="false" aria-controls="security">
-                                    Set security Questions   <i class="fa fa-lock m-2" style="color: #e2622b; font-size: 20px;font-weight: bold"></i>
+                                    Set security Questions <i class="fa fa-lock m-2"
+                                                              style="color: #e2622b; font-size: 20px;font-weight: bold"></i>
                                 </button>
                                 <div class="collapse" id="security">
                                     <div class="container">
@@ -186,7 +195,7 @@ include "IncludesParts/header.php";
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <button name="submit" type="submit"
-                                                            class="btn btn-primary text-uppercase">
+                                                            class="btn btn-primary ">
                                                         Update
                                                         Password
                                                     </button>
