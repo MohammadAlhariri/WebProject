@@ -1,20 +1,18 @@
 General ChangeListManager:
 
-- Ne logo
+- New logo
 - Redesign header:
 - Redesign footer: divide as book
 
-User Package:
+- User Package:
 
 - Home page:
     - Redesign Ecommerce section design header add cards beside welcome section as featured Items.
     - add a new section new Arrival Items.
     - add a new section lower than X dollars.
 
-
 - products page:
     - nothing.
-
 
 - cart page:
     - add shadows for shipping address section.
