@@ -9,7 +9,7 @@ $tmpOrderID = "";
 <style>
     .shopping-cart {
         width: 100%;
-        margin: 80px auto;
+        margin: 20px auto;
         background: #FFFFFF;
         box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
         border-radius: 6px;
@@ -205,7 +205,7 @@ $tmpOrderID = "";
     }
 
 </style>
-    <div class="row">
+    <div class="row" style="margin-bottom: 70px">
         <div class="col-md-8">
             <div class="container">
                 <div class="shopping-cart">
@@ -300,9 +300,10 @@ $tmpOrderID = "";
                     <div class="titles">
                         Shipping Address
                     </div>
+                    <div class="container">
                     <div class="row">
 
-                        <form method="post" action="../model/updateOrderState.php" class="col-md-11">
+                        <form method="post" action="../model/updateOrderState.php" class="col-md-11 p-2">
                             <!-- 2 column grid layout with text inputs for the first and last names -->
 
 
@@ -346,7 +347,7 @@ $tmpOrderID = "";
                             <!-- Submit button -->
                             <button type="submit" class="btn btn - primary">Place order</button>
                         </form>
-                    </div>
+                    </div></div>
                 </div>
             </div>
         </div>

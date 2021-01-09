@@ -1,4 +1,5 @@
 <?php
+function getProductsByOrder($oid){
 
     $sql="SELECT `product`.*,`order`.`orderTotal`,`order_content`.`quantity`,`order_content`.`price` 
     FROM `product`,`order`,`order_content` 
@@ -15,4 +16,6 @@ if ($result = mysqli_query($con,$sql))
   // Free result set
   mysqli_free_result($result);
   mysqli_close($con);
+}
+
 }

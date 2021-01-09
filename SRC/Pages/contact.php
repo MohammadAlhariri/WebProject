@@ -21,7 +21,7 @@ include "IncludesParts/header.php";?>
           <div class="col-md-6">
             <div class="right-content">
               <div class="container">
-                <form id="contact" action="../model/f" method="post">
+                <form id="contact" action="../model/sendFeedBackMSG.php" method="post">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -30,7 +30,7 @@ include "IncludesParts/header.php";?>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <input name="email" type="text" class="form-control" id="email" placeholder="Your email..." required="">
+                        <input name="phone" type="text" class="form-control" id="phone" placeholder="Your Phone..." required="">
                       </div>
                     </div>
                     <div class="col-md-12">

@@ -1,18 +1,11 @@
 <?php
 
 require_once("../dataSources/config/connectWithRemoteDB.php");
-$ContactNumber = $_SESSION['userID'];
-$ContactName = $_SESSION['userName'];
-$Parent = $_SESSION['Parent'];
+$Contact_name = addslashes(strip_tags($_POST['name']));
 $Subject = addslashes(strip_tags($_POST['subject']));
 $Message = addslashes(strip_tags($_POST['message']));
 $customerPhone = addslashes(strip_tags($_POST['phone']));
-if ($Parent == 'Users') {
-    sendFeedBackMsg($ContactNumber, $Subject, $Message, $ContactName);
-}
-
-header("Location: ../Pages/feedback.php?JustForUsers");
-
+sendFeedBackMsg($customerPhone, $Subject, $Message, $Contact_name);
 function sendFeedBackMsg($ContactNumber, $Subject, $Message, $ContactName)
 {
     $connect = new DbConnection();
@@ -22,5 +15,5 @@ function sendFeedBackMsg($ContactNumber, $Subject, $Message, $ContactName)
             `Message` = '$Message',
             `Contact_name` = '$ContactName';";
     mysqli_query($connect->getdbconnect(), $sql);
-    header("Location: ../Pages/contact.php?MSGSanded");
+    header("Location: ../Pages/contact.php?MSGSanded".mysqli_error($connect));
 }
