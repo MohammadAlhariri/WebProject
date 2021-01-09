@@ -2,14 +2,24 @@
 require_once("../dataSources/config/connectWithRemoteDB.php");
 session_start();
 $password = addslashes(strip_tags($_POST['password']));
+$repassword = addslashes(strip_tags($_POST['repassword']));
 $Parent = $_SESSION['parent'];
 
-if ($Parent == 'Users' || $Parent == 'Admins') {
+header("Location: ../Pages/setting.php?msg=$password . $repassword");
 
-    updateUserPassword($password);
+if ($password == $repassword) {
 
-} else if ($Parent == 'seller') {
-    updateSellerPassword($password);
+    if ($Parent == 'Users' || $Parent == 'Admins') {
+
+        updateUserPassword($password);
+
+    } else if ($Parent == 'seller') {
+        updateSellerPassword($password);
+    }
+
+} else {
+    header("Location: ../Pages/setting.php?msg=NotSamePassword");
+
 }
 
 function updateUserPassword($password)

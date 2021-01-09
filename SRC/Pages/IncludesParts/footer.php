@@ -1,8 +1,3 @@
-<?php
-
-?>
-
-
 <!-- Subscribe Form Starts Here -->
 <div class="subscribe-form">
     <div class="container">
