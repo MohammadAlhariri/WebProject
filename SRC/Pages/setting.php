@@ -139,18 +139,17 @@ include "IncludesParts/header.php";
                 if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') { ?>
                     <div class="container">
                         <h4>Set security questions to restore account if you forget password</h4>
-                        <form action="">
+                        <form action="../model/updateSecurityAnswers.php" method="post">
                             <div class="row">
                                 <div class="col-md-10">
-                                    c
-                                    <label>Current Password</label>
+                                    <label>First Answer</label>
                                     <div class="form-group pass_show">
-                                        <input type="text" value="" class="form-control"
+                                        <input type="text" value="" name="answer1" class="form-control"
                                                placeholder="What is your father name?">
                                     </div>
-                                    <label>New Password</label>
+                                    <label>Second Answer</label>
                                     <div class="form-group pass_show">
-                                        <input type="text" value="" class="form-control"
+                                        <input type="text" value="" name="answer2" class="form-control"
                                                placeholder="What is your best color?">
                                     </div>
 
@@ -171,8 +170,6 @@ include "IncludesParts/header.php";
                     $(document).ready(function () {
                         $('.pass_show').append('<span class="ptxt">Show</span>');
                     });
-
-
                     $(document).on('click', '.pass_show .ptxt', function () {
 
                         $(this).text($(this).text() == "Show" ? "Hide" : "Show");
