@@ -184,4 +184,4 @@ include "IncludesParts/header.php";
         </div>
     </div>
 </div>
-<?php include "IncludesParts/footer.php" ?>;
+<?php include "IncludesParts/footer.php" ?>

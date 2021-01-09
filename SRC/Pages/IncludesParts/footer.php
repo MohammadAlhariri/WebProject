@@ -1,98 +1,96 @@
-<!-- Subscribe Form Starts Here -->
-<div class="subscribe-form">
-    <div class="container">
-        <div class="row">
+<div class="row subscribe-form ">
+
+
+    <div class="row">
+        <div class="col-md-6">
             <div class="col-md-12">
                 <div class="section-heading">
                     <div class="line-dec"></div>
                     <h1>Subscribe on <span id="titlel"> <span id="elogo">e</span>-Commerce</span> now!</h1>
                 </div>
             </div>
-            <div class="col-md-8 offset-md-2">
-                <div class="main-content">
-                    <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id dictum
-                        efficitur. Phasellus vel interdum elit.</p>
-                    <div class="container">
-                        <form id="subscribe" action="" method="get">
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <fieldset>
-                                        <input name="email" type="text" class="form-control" id="email"
-                                               onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
-                                               onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                                               value="Your Email..." required="">
-                                    </fieldset>
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="main-content">
+                        <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id
+                            dictum
+                            efficitur. Phasellus vel interdum elit.</p>
+                        <div class="">
+                            <form id="subscribe" action="" method="get">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <fieldset>
+                                            <input name="email" type="text" class="form-control" id="email"
+                                                   onfocus="if(this.value == 'Your Email...') { this.value = ''; }"
+                                                   onBlur="if(this.value == '') { this.value = 'Your Email...';}"
+                                                   value="Your Email..." required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="button">Subscribe
+                                            </button>
+                                        </fieldset>
+                                    </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <fieldset>
-                                        <button type="submit" id="form-submit" class="button">Subscribe Now!</button>
-                                    </fieldset>
-                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="footer">
+                <div class="">
+                    <div class="row text-light">
+                        <div class="col-md-12">
+                            <div class="logo">
+                                <img src="assets/Untitled-1.png" alt="">
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="#">Help</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="about.php">About Us</a></li>
+                                    <li><a href="contact.php">Contact Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="social-icons">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </div>
-<!-- Subscribe Form Ends Here -->
-
-
-<!-- Footer Starts Here -->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="logo">
-                    <img src="assets/Untitled-1.png" alt="">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="footer-menu">
-                    <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="about.php">About Us</a></li>
-                        <li><a href="contact.php">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="social-icons">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer Ends Here -->
-
-
-<!-- Sub Footer Starts Here -->
 <div class="sub-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="copyright-text">
-                    <p>Copyright &copy; 2021 Company Name
 
-                    </p>
-                </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="copyright-text">
+                <p>Copyright &copy; 2021 Company Name
+
+                </p>
             </div>
         </div>
+
     </div>
 </div>
-<!-- Sub Footer Ends Here -->
 
-
-<!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -126,6 +124,7 @@
         }
     });
 </script>
+
 </body>
 
 </html>
