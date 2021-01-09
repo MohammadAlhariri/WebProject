@@ -9,6 +9,7 @@ General ChangeListManager:
 - Home page:
     - Redesign Ecommerce section design header add 
         cards beside welcome section as featured Items.-> Done
+        
     - add a new section new Arrival Items.-> In Progress
     - add a new section lower than X dollars. -> In Progress
 
