@@ -5,7 +5,6 @@
         <div class="col-md-6">
             <div class="col-md-12">
                 <div class="section-heading">
-                    <div class="line-dec"></div>
                     <h1>Subscribe on <span id="titlel"> <span id="elogo">e</span>-Commerce</span> now!</h1>
                 </div>
             </div>
