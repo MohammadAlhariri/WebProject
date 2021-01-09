@@ -225,8 +225,8 @@ $tmpOrderID = "";
                                     <a href="../model/removeProductFromOrder.php?productID=<?php echo $row["productID"]; ?>&orderID=<?php echo $row["orderID"]; ?>"><span
                                                 class="delete-btn"></span></a>
                                     <?php $tmpOrderID = $row["orderID"]; ?>
-                                    <span class="like-btn"></span>
-                                </div>
+<!--                                    <span class="like-btn"></span>
+-->                                </div>
 
                                 <div class="image">
                                     <img src="../<?php echo $row["productImage"]; ?>"
