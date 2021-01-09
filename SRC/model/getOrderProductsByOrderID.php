@@ -1,5 +1,4 @@
 <?php
-
 function getProductsByOrder($oid)
 {
 
@@ -12,9 +11,6 @@ function getProductsByOrder($oid)
     AND `order_content`.`orderID`=$oid;";
     $result = mysqli_query($connect->getdbconnect(), $sql);
     return $result;
-
-
-
 
 
 }
