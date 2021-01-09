@@ -99,13 +99,14 @@ include "IncludesParts/header.php";
                                                              placeholder="Enter Address"></div>
                             </div>
                         <?php } ?>
-                        <div class="form-group">
-                            <input class="form-control-file" name="fileInput" id="fileInput" type="file"
+                        <div class="form-group m-1 p-2 fileTo">
+                            Upload Profile Picture
+                            <input class="form-control hide_file" name="fileInput" id="fileInput" type="file"
                                    accept="image/*">
                         </div>
                         <div class="row p-2">
                             <div class="col-md-2">
-                                <button name="submit" type="submit" class="btn btn-primary text-uppercase">Update
+                                <button name="submit" type="submit" class="btn btn-primary text-uppercase p-2">Update
                                     Profile
                                 </button>
                             </div>

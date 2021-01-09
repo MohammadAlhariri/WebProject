@@ -18,7 +18,7 @@ General ChangeListManager:
 
 - cart page:
     - add shadows for shipping address section. -> Done
-    - add total amount for shopping bag. -> In Progress
+    - add total amount for shopping bag. -> Done
     - remove add to favorites button.-> Done
 
     + get last order shipping address. -> In Progress
@@ -40,12 +40,12 @@ General ChangeListManager:
     - some blah blah blah blah blah blah blah blah blah. -> Done
 
 - my settings page:
-    - divide change personal information section.
-    - divide change password section.
-    - divide change answer section.
+    - divide change personal information section. -> Done
+    - divide change password section. -> Done
+    - divide change answer section. -> Done
     - Redesign choice file section.
-    - make update password section as collapse.
-    - make update answer section as collapse.
+    - make update password section as collapse. -> Done
+    - make update answer section as collapse. -> Done
 
 - seller section:
     - header to my products page when login.
