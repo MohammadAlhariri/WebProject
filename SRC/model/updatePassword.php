@@ -5,7 +5,6 @@ $password = addslashes(strip_tags($_POST['password']));
 $repassword = addslashes(strip_tags($_POST['repassword']));
 $Parent = $_SESSION['parent'];
 
-header("Location: ../Pages/setting.php?msg=$password . $repassword");
 
 if ($password == $repassword) {
 
@@ -18,7 +17,7 @@ if ($password == $repassword) {
     }
 
 } else {
-    header("Location: ../Pages/setting.php?msg=NotSamePassword");
+   echo "password is not the same";
 
 }
 
@@ -31,17 +30,11 @@ function updateUserPassword($password)
         WHERE  `user`.`userID` = '$userID';";
 
     $result = mysqli_query($connect->getdbconnect(), $sql);
-    $msg = "Empty msg";
-    $intMsg = "";
+
     if ($result) {
-        $msg = "password updated successfully";
-        $intMsg = 1;
-        header("Location: ../Pages/setting.php?msg=$intMsg");
+        echo "password updated successfully";
     } else {
-        echo $msg = "Something wrong!";
-        $intMsg = -1;
-        header("Location: ../Pages/setting.php?msg=$intMsg");
-        mysqli_query_error($connect->getdbconnect);
+        echo  "Something wrong!";
     }
     mysqli_close($connect->getdbconnect());
 
@@ -55,17 +48,13 @@ function updateSellerPassword($password)
         SET `sellerPassword` = '$password' 
         WHERE  `seller`.`sellerID` = '$userID';";
     $result = mysqli_query($connect->getdbconnect(), $sql);
-    $msg = "Empty msg";
-    $intMsg = "";
+
     if ($result) {
-        $msg = "password updated successfully";
-        $intMsg = 1;
-        header("Location: ../Pages/setting.php?msg=$intMsg");
+        echo"password updated successfully";
+
     } else {
-        echo $msg = "Something wrong!";
-        $intMsg = -1;
-        header("Location: ../Pages/setting.php?msg=$intMsg");
-        mysqli_query_error($connect->getdbconnect);
+        echo  "Something wrong!";
+
     }
     mysqli_close($connect->getdbconnect());
 }

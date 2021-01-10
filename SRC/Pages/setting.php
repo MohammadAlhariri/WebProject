@@ -133,18 +133,22 @@ include "IncludesParts/header.php";
                             <div class="collapse" id="passw">
 
                                 <div class="container">
-                                    <form action="../model/updatePassword.php" method="POST">
+
+
+                                    <form>
                                         <div class="row barStyle m-2 p-2">
                                             <div class="col-md-10">
 
                                                 <label>New Password</label>
                                                 <div class="form-group pass_show">
-                                                    <input type="password" name="password" class="form-control"
+                                                    <input id="pass1" type="password"
+                                                           class="form-control"
                                                            placeholder="New Password">
                                                 </div>
                                                 <label>Confirm Password</label>
                                                 <div class="form-group pass_show">
-                                                    <input type="password" name="repassword" class="form-control"
+                                                    <input id="pass2" type="password"
+                                                           class="form-control"
                                                            placeholder="Confirm Password">
                                                 </div>
 
@@ -152,11 +156,12 @@ include "IncludesParts/header.php";
                                         </div>
                                         <div class="row  m-2 p-2">
                                             <div class="col-md-2">
-                                                <button name="submit" type="submit"
-                                                        class="btn btn-primary ">Update
+                                                <a onclick="changePassword()"
+                                                   class="btn btn-primary ">Update
                                                     Password
-                                                </button>
+                                                </a>
                                             </div>
+                                            <div class="col-md-4 offset-6 text-danger" id="response"></div>
 
                                         </div>
                                     </form>
