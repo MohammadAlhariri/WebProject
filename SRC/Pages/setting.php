@@ -29,14 +29,15 @@ include "IncludesParts/header.php";
                                         class="fa fa-long-arrow-left mr-1 mb-1"></i>
                                 <h6>Back to home</h6>
                             </div>
-                            <div class="col-md-12 barStyle p-2 ">
-                                <h6 class="">Edit Profile</h6>
+                            <div class="col-md-12">
+                                <div class="row barStyle m-2 "><h4 class="p-2  m-2">Edit Profile </h4></div>
+
                             </div>
                         </div>
                         <?php
                         if ($_SESSION['parent'] == "Users" || $_SESSION['parent'] == "Admins") {
                             ?>
-                            <div class="row mt-2">
+                            <div class="row">
                                 <div class="col-md-6"><label for="name">Full Name</label></div>
                                 <div class="col-md-6"><input id="name" name="name" type="text" class="form-control"
                                                              value="<?php echo $_SESSION["userName"]; ?>"
@@ -100,14 +101,14 @@ include "IncludesParts/header.php";
                         <?php } ?>
                         <div class="row">
                             <div class="col-md-2 offset-8">
-                                <div class="form-group m-1 p-2 fileTo">
+                                <div class="form-group mt-2 m-1 p-2 fileTo">
                                     Upload Picture
                                     <input class="form-control hide_file" name="fileInput" id="fileInput"
                                            type="file"
                                            accept="image/*">
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 ">
                                 <div class="row p-2">
                                     <div class="col-md-2 ">
                                         <button name="submit" type="submit" class="btn btn-primary p-2">
@@ -121,19 +122,19 @@ include "IncludesParts/header.php";
                     </form>
 
 
-                    <div class="row mt-2 border-top  p-2">
+                    <div class="row barStyle mt-2 border-top m-2 p-2">
                         <div class="container">
                             <button class="btn btn-primary" type="button" data-toggle="collapse"
                                     data-target="#passw"
                                     aria-expanded="false" aria-controls="passw">
                                 Update Password <i class="fa fa-key m-2 "
-                                                   style="color: #e2622b ;font-size: 20px;font-weight: bold"></i>
+                                                   s tyle="color: #e2622b ;font-size: 20px;font-weight: bold"></i>
                             </button>
                             <div class="collapse" id="passw">
 
                                 <div class="container">
                                     <form action="../model/updatePassword.php" method="POST">
-                                        <div class="row">
+                                        <div class="row barStyle m-2 p-2">
                                             <div class="col-md-10">
 
                                                 <label>New Password</label>
@@ -149,7 +150,7 @@ include "IncludesParts/header.php";
 
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row  m-2 p-2">
                                             <div class="col-md-2">
                                                 <button name="submit" type="submit"
                                                         class="btn btn-primary ">Update
@@ -165,7 +166,7 @@ include "IncludesParts/header.php";
                     </div>
                     <?php
                     if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') { ?>
-                        <div class="row mt-2 border-top  p-2">
+                        <div class="row barStyle mt-2 border-top m-2 p-2">
                             <div class="container">
                                 <button class="btn btn-primary" type="button" data-toggle="collapse"
                                         data-target="#security"
@@ -175,9 +176,10 @@ include "IncludesParts/header.php";
                                 </button>
                                 <div class="collapse" id="security">
                                     <div class="container">
-                                        <h4>Set security questions to restore account if you forget password</h4>
+                                        <h4 style="padding-top: 10px">Set security questions to restore account if you
+                                            forget password</h4>
                                         <form action="../model/updateSecurityAnswers.php" method="post">
-                                            <div class="row">
+                                            <div class="row barStyle m-2 p-2 ">
                                                 <div class="col-md-10">
                                                     <label>First Answer</label>
                                                     <div class="form-group ">
@@ -192,12 +194,12 @@ include "IncludesParts/header.php";
 
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
+                                            <div class="row ">
+                                                <div class="col-md-2 p-2 ">
                                                     <button name="submit" type="submit"
                                                             class="btn btn-primary ">
                                                         Update
-                                                        Password
+                                                        Answers
                                                     </button>
                                                 </div>
 
