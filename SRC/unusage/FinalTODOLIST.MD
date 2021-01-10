@@ -43,16 +43,16 @@ General ChangeListManager:
     - divide change personal information section. -> Done
     - divide change password section. -> Done
     - divide change answer section. -> Done
-    - Redesign choice file section.
+    - Redesign choice file section. -> Done
     - make update password section as collapse. -> Done
     - make update answer section as collapse. -> Done
 
 - seller section:
-    - header to my products page when login.
-    - remove my shipments
+    - header to my products page when login. 
+    - remove my shipments. ->Done
 
 - Admin section:
-    - remove Home and products pages from a header.
-    - feedback page.
-    - add approve order that approve shipping orders.
-    - add my sitting in a dropdown.
+    - remove Home and products pages from a header. ->Done
+    - feedbacks page.
+    - add approve order that approve shipping orders. ->Done
+    - add my setting in a dropdown. ->Done

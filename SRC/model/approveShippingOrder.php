@@ -1,6 +1,6 @@
 <?php
 require_once("../dataSources/config/connectWithRemoteDB.php");
-$orderID = addslashes(strip_tags($_POST['productID']));
+$orderID = addslashes(strip_tags($_GET['oid']));
 
 approveShippingOrder($orderID);
 
