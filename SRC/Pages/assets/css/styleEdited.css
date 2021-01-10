@@ -83,3 +83,7 @@ body > div.container.tm-mt-big.tm-mb-big > div > div > div > div.row.mb-2 > div 
     width: 100%;
 
 }
+.barStyle{
+   color: #e2622b ;border-radius: 10px;box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.16);
+
+}
