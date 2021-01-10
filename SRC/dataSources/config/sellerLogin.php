@@ -11,7 +11,7 @@ if ($result = mysqli_query($connect->getdbconnect(), $sql)) {
     if (!empty($row)) {
         if ($row["sellerPassword"] == $password) {
             getSellerInfo($email);
-            header("Location: ../../Pages/index.php");
+            header("Location: ../../Pages/seller-products.php");
         } else {
 
             header("Location: ../../Pages/welcome-page-seller.php?msg=1");

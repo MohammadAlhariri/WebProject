@@ -22,7 +22,6 @@ include "IncludesParts/header.php";
             </div>
             <div class="col-md-8">
                 <div class="p-3 py-5">
-
                     <form action="../model/updateUserProfile.php" method="post" enctype="multipart/form-data">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <div class="d-flex flex-row align-items-center  back"><i
@@ -120,8 +119,6 @@ include "IncludesParts/header.php";
                             </div>
                         </div>
                     </form>
-
-
                     <div class="row barStyle mt-2 border-top m-2 p-2">
                         <div class="container">
                             <button class="btn btn-primary" type="button" data-toggle="collapse"
@@ -134,35 +131,29 @@ include "IncludesParts/header.php";
 
                                 <div class="container">
 
-
-                                    <form>
+                                    <form id="updatePassword">
                                         <div class="row barStyle m-2 p-2">
                                             <div class="col-md-10">
 
                                                 <label>New Password</label>
                                                 <div class="form-group pass_show">
-                                                    <input id="pass1" type="password"
+                                                    <input id="pass1" name="password" type="password"
                                                            class="form-control"
                                                            placeholder="New Password">
                                                 </div>
                                                 <label>Confirm Password</label>
                                                 <div class="form-group pass_show">
-                                                    <input id="pass2" type="password"
+                                                    <input id="pass2" name="repassword" type="password"
                                                            class="form-control"
                                                            placeholder="Confirm Password">
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="row  m-2 p-2">
                                             <div class="col-md-2">
-                                                <a onclick="changePassword()"
-                                                   class="btn btn-primary ">Update
-                                                    Password
-                                                </a>
+                                                <input type="submit" class="btn btn-primary "/>
                                             </div>
                                             <div class="col-md-4 offset-6 text-danger" id="response"></div>
-
                                         </div>
                                     </form>
                                 </div>
@@ -171,55 +162,48 @@ include "IncludesParts/header.php";
                     </div>
                     <?php
                     if ($_SESSION['parent'] == 'Users' || $_SESSION['parent'] == 'Admins') { ?>
-                        <div class="row barStyle mt-2 border-top m-2 p-2">
-                            <div class="container">
-                                <button class="btn btn-primary" type="button" data-toggle="collapse"
-                                        data-target="#security"
-                                        aria-expanded="false" aria-controls="security">
-                                    Set security Questions <i class="fa fa-lock m-2"
-                                                              style="color: #e2622b; font-size: 20px;font-weight: bold"></i>
-                                </button>
-                                <div class="collapse" id="security">
-                                    <div class="container">
-                                        <h4 style="padding-top: 10px">Set security questions to restore account if you
-                                            forget password</h4>
-                                        <form action="../model/updateSecurityAnswers.php" method="post">
-                                            <div class="row barStyle m-2 p-2 ">
-                                                <div class="col-md-10">
-                                                    <label>First Answer</label>
-                                                    <div class="form-group ">
-                                                        <input type="text" value="" name="answer1" class="form-control"
-                                                               placeholder="What is your father name?">
-                                                    </div>
-                                                    <label>Second Answer</label>
-                                                    <div class="form-group ">
-                                                        <input type="text" value="" name="answer2" class="form-control"
-                                                               placeholder="What is your best color?">
-                                                    </div>
-
+                    <div class="row barStyle mt-2 border-top m-2 p-2">
+                        <div class="container">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#security"
+                                    aria-expanded="false" aria-controls="security">
+                                Set security Questions <i class="fa fa-lock m-2"
+                                                          style="color: #e2622b; font-size: 20px;font-weight: bold"></i>
+                            </button>
+                            <div class="collapse" id="security">
+                                <div class="container">
+                                    <h4 style="padding-top: 10px">Set security questions to restore account if you
+                                        forget password</h4>
+                                    <form id="changeSecurityAnswers">
+                                        <div class="row barStyle m-2 p-2 ">
+                                            <div class="col-md-10">
+                                                <label>First Answer</label>
+                                                <div class="form-group ">
+                                                    <input type="text" value="" name="answer1" class="form-control"
+                                                           placeholder="What is your father name?">
+                                                </div>
+                                                <label>Second Answer</label>
+                                                <div class="form-group ">
+                                                    <input type="text" value="" name="answer2" class="form-control"
+                                                           placeholder="What is your best color?">
                                                 </div>
                                             </div>
-                                            <div class="row ">
-                                                <div class="col-md-2 p-2 ">
-                                                    <button name="submit" type="submit"
-                                                            class="btn btn-primary ">
-                                                        Update
-                                                        Answers
-                                                    </button>
-                                                </div>
-
+                                        </div>
+                                        <div class="row  m-2 p-2">
+                                            <div class="col-md-2">
+                                                <input type="submit" value="Change Security Answers"
+                                                       class="btn btn-primary "/>
                                             </div>
-                                        </form>
-                                    </div>
+                                            <div class="col-md-4 offset-6 text-danger" id="answerResponse"></div>
+                                        </div>
                                 </div>
+                                </form>
                             </div>
-                        </div><?php } ?>
-                    <script>
-
-
-                    </script>
-                </div>
+                        </div>
+                    </div>
+                </div><?php } ?>
             </div>
         </div>
+    </div>
     </div>
 <?php include "IncludesParts/footer.php" ?>

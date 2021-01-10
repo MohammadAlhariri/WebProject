@@ -16,16 +16,13 @@ function updateSecurityAnswers($answer1, $answer2)
         WHERE  `user`.`userID` = '$userID' ;";
 
     $result = mysqli_query($connect->getdbconnect(), $sql);
-    $msg = "Empty msg";
-    $intMsg = "";
+
     if ($result) {
-        $msg = "Security Answer updated successfully";
-        $intMsg = "1";
-        header("Location: ../Pages/setting.php?msg=$intMsg");
+        echo "Security Answer Updated Successfully";
+
     } else {
-        echo $msg = "Something wrong!";
-        $intMsg = "-1";
-        header("Location: ../Pages/setting.php?msg=$intMsg");
+        echo "Something wrong!";
+
     }
     mysqli_close($connect->getdbconnect());
 }
