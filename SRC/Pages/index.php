@@ -3,6 +3,7 @@
 include "IncludesParts/header.php";
 include "../model/getAllValidProducts.php";
 $products = getAllProducts();
+$r = mysqli_fetch_array($products);
 ?>
 
     <div class="row">
@@ -24,30 +25,29 @@ $products = getAllProducts();
                     <div class="card">
                         <div class="front">
                             <div class="cover">
-                                <?php //echo $r["productCategory"]; ?>
+                                <?php echo $r["productCategory"]; ?>
                                 Hello
                             </div>
                             <div class="user">
-                                <!-- <img class="img-circle" src="../<?php /*//echo $r["productImage"]; */ ?>"/>-->
-                                <img class="img-circle" src="assets/images/big-01.jpg"/>
+                                <img class="img-circle" src="../<?php echo $r["productImage"];  ?>"/>
                             </div>
                             <div class="content">
                                 <div class="main">
-                                    <h5 class="name">Name : <?php //echo $r["productName"]; ?></h5>
-                                    <h5 class="name">Price : <?php //echo $r["productPrice"]; ?>$</h5>
+                                    <h5 class="name">Name : <?php echo $r["productName"]; ?></h5>
+                                    <h5 class="name">Price : <?php echo $r["productPrice"]; ?>$</h5>
                                 </div>
 
                             </div>
                         </div> <!-- end front panel -->
                         <div class="back ">
                             <div class="header">
-                                <h5 class="motto"> Hello <?php //echo $r["productDate"]; ?></h5>
+                                <h5 class="motto">  <?php echo $r["productDate"]; ?></h5>
                             </div>
                             <div class="content row">
                                 <div class="main">
                                     <div class="container text-center">
-                                        <h5 class="text-center">Hello <?php //echo $r["productDescription"]; ?></h5>
-                                        <p class="text-center">Hello <?php //echo $r["productState"]; ?></p></div>
+                                        <h5 class="text-center"><?php echo $r["productDescription"]; ?></h5>
+                                        </div>
 
                                 </div>
                             </div>
@@ -55,14 +55,11 @@ $products = getAllProducts();
                             <div class="footer row">
 
                                 <div class="social-links text-center row">
-                                    <form class="col-md-12 "
-                                          action="update-product-seller.php"
-                                          method="post">
-                                        <input type="hidden" name="id"
-                                               value="<?php //echo $r["productID"]; ?>"/>
-                                        <input value="Order Now" type="submit"
-                                               class="btn btn-outline-primary">
-                                    </form>
+
+                                    <a value="Order Now"
+                                       href="single-product.php?productID=<?php echo $r["productID"]; ?>"
+                                       class="btn btn-outline-primary"> Order Now</a>
+
                                 </div>
                             </div>
                         </div> <!-- end back panel -->
@@ -75,15 +72,18 @@ $products = getAllProducts();
             <div class="container ">
 
                 <div class="row index-card">
-                    <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <?php
+                    $products = getAllProducts();
+                    $i = 1;
+                    while ($r = mysqli_fetch_array($products)) { ?>
                         <div class="col-md-6">
                             <div class="card-container ">
                                 <div class="card">
-                                    <div class="front" style="background: url('assets/images/big-01.jpg') center center no-repeat ;
+                                    <div class="front" style="background: url('../<?php echo $r["productImage"]; ?>') center center no-repeat ;
                                                                background-size: cover ; border: 7px solid white">
                                         <div class="cover text-dark">
-                                            <?php //echo $r["productCategory"]; ?>
-                                            name
+                                            <?php echo $r["productCategory"]; ?>
+
                                         </div>
 
 
@@ -92,35 +92,17 @@ $products = getAllProducts();
                                         <div class="container">
                                             <div class="text-center">
                                                 <h5 class="text-primary text-center">
-                                                    Category: <?php //echo $r["productDate"]; ?></h5>
+                                                    Category: <?php echo $r["productCategory"]; ?></h5>
                                             </div>
                                             <div class="row">
 
 
-                                                <h5 class="text-danger w-100 text-center ">
-                                                    Price :$ <?php //echo $r["productDescription"]; ?></h5>
+                                                <p class="text-danger w-100 text-center ">
+                                                    Price :$ <?php echo $r["productPrice"]; ?></p>
+                                                <br>
                                                 <p class="text-primary text-center w-100 "
                                                    style="overflow: hidden; height: 100px">
-                                                    description: Lorem ipsum dolor sit Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Animi dolorum eum fuga illo ipsum iure
-                                                    necessitatibus neque nesciunt nisi officiis praesentium quaerat
-                                                    repellat sapiente sint tempore temporibus tenetur ullam, ut, veniam
-                                                    voluptatibus! A accusamus, alias aliquid assumenda beatae delectus
-                                                    dicta ducimus esse eveniet illum impedit ipsa itaque iusto
-                                                    laudantium libero natus nostrum officia officiis provident quaerat
-                                                    quod saepe sapiente similique sit soluta vero vitae. Dolores dolorum
-                                                    ea eos harum modi quia quidem, sequi vel! Commodi delectus ea
-                                                    eligendi labore magnam quae, quaerat quibusdam soluta veniam!
-                                                    Accusamus asperiores consectetur culpa dicta dignissimos distinctio
-                                                    earum eius, iste, laudantium porro sit soluta, velit. amet,
-                                                    consectetur adipisicing elit. Dolores quas ullam vel! Adipisci animi
-                                                    cumque dolore ea eligendi eos est facere, illum in inventore ipsa
-                                                    laborum, modi mollitia necessitatibus officiis possimus provident
-                                                    quaerat quo quod ratione sed veritatis voluptatum. Alias
-                                                    consequuntur delectus dignissimos numquam perspiciatis praesentium
-                                                    repellat, saepe suscipit tempora? Lorem ipsum dolor sit amet,
-                                                    consectetur adipisicing elit. Assumenda,
-                                                    perferendis? <?php //echo $r["productState"]; ?></p>
+                                                    description: <?php echo $r["productDescription"]; ?></p>
 
 
                                             </div>
@@ -128,14 +110,11 @@ $products = getAllProducts();
                                             <div class="footer m-0">
 
                                                 <div class=" text-center row">
-                                                    <form class="col-md-12 "
-                                                          action="update-product-seller.php"
-                                                          method="post">
-                                                        <input type="hidden" name="id"
-                                                               value="<?php //echo $r["productID"]; ?>"/>
-                                                        <input value="Order Now" type="submit"
-                                                               class="btn btn-outline-primary">
-                                                    </form>
+
+                                                    <a value="Order Now"
+                                                       href="single-product.php?productID=<?php echo $r["productID"]; ?>"
+                                                       class="btn btn-outline-primary"> Order Now</a>
+
 
                                                 </div>
                                             </div>
@@ -144,7 +123,12 @@ $products = getAllProducts();
                                 </div> <!-- end card -->
                             </div>
                         </div>
-                    <?php } ?>
+                        <?php $i++;
+                        if ($i == 5) {
+                            break;
+                        }
+                    } ?>
+
                 </div>
             </div>
         </div>
@@ -210,3 +194,4 @@ $products = getAllProducts();
     </div>
 
 <?php include "IncludesParts/footer.php";
+?>
